@@ -11,7 +11,7 @@
 	<groupId>com.commonboard</groupId>
 	<artifactId>eai-work</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>eai-work</name>
 	<description>eai-work project for Spring Boot</description>
 	<url/>

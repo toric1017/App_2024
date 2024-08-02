@@ -1,0 +1,27 @@
+@charset "EUC-KR";
+
+.pagination {
+	display: flex;
+	justify-content : center;
+	font-size: 20px;
+	padding: 20px;
+}
+
+.pagination a {
+	border-radius: 5px;
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+}
+
+.pagination a.active {
+	border-radius: 5px;
+	background-color: #2196F3;
+	color: white;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}

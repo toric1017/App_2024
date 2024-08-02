@@ -1,5 +1,117 @@
-@charset "UTF-8";
+@charset "EUC-KR";
 
-h1 {
-	color : #408080;
+body {
+	background-color : #DDE5F4;
+	font-family: "Lato", sans-serif;
+}
+
+h5 {
+	margin: 10px 0 10px 0;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+    background-color: none;
+}
+
+.text_align_center{
+	text-align : center; 
+}
+
+.content { 
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+.card {
+	background-color: white;
+	padding : 20px;
+	margin: 70px auto;
+	/*border : 1px solid #2196F3;*/
+	border-radius : 10px; 
+	box-shadow : 0 1px 6px 0 #20212447;
+	text-align: center;
+}
+
+.card.login_logo{
+	width: 600px;
+} 
+
+.card.login_input{
+	display: flex;
+    width: 300px;
+    height: 350px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card .card_title {
+	display: inline-block;
+	text-align: center;
+}
+
+.card .card_control {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius : 10px;
+	/*box-shadow : 0 1px 6px 0 #20212447;*/
+	padding: 10px 0px 10px 0;
+    margin: 15px 0 15px 0;
+    width: 200px;
+}
+
+.card .card_control p {
+	color: #6b6a6a;
+	font-size: 17px;
+	font-weight: bold;
+	margin: 5px 15px 5px 15px;
+}
+
+.card .card_control .card_control_icon_text {
+    display: flex;
+    font-size: 17px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    color: #6b6a6a;
+    margin: 5px 5px 5px 5px;
+    padding: 5px 0 5px 0px; 
+}
+
+.card .card_control .card_control_icon_text .div_icon {
+	font-size: 20px;
+    margin: 5px 10px 5px 10px;
+}
+
+.card .card_control.input_btn_control{
+	box-shadow: none;
+}
+ 
+.card .card_control input[type="text"], input[type="password"]{
+	border: none;
+	border-radius: 5px;
+    margin: 0px 0px 0px 5px;
+    width: 70%;
+    padding: 5px 10px 5px 10px;
+}
+
+.card .card_control input[type="button"]{
+	padding: 3px 10px 3px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 6px 0 #20212447;
+    cursor : pointer;
+    width: 100%;
+    height: 35px;
+}
+
+.card .card_control input[type="button"]:hover{
+	background-color: #64baff;
 }

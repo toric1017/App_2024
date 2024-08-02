@@ -1,0 +1,38 @@
+@charset "EUC-KR";
+
+.header{
+	font-size: 22px;
+    padding: 0px 15px;
+    position: fixed;
+    width: 100%; 
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff; 
+    border-bottom: 2px solid #4F4F4F;
+    z-index: 100;
+} 
+
+.header_control{
+	margin: 0 50px 0px 50px;
+}
+
+.header_row{ 
+	cursor:pointer;
+}
+
+.header_row a {
+	display : inline-block;
+	position: absolute;
+	width: 55px;
+    height: 50px; 
+	outline: 0;
+	touch-action: none;
+	text-decoration: none;
+}
+
+.logoIntro {
+	padding: 10px 20px 10px 20px;
+    height: 70px;
+}

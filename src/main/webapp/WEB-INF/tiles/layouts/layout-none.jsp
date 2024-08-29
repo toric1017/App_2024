@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>Meta-App-Manage</title>
+	<title>EAI-PORTAL</title>
 	
 	<!-- meta tag -->
 	<meta charset="UTF-8">

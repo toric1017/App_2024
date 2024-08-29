@@ -12,11 +12,29 @@
 			<div class="div-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
 		</div>
 	</div>
-	<img class="logoIntro" src="/img/logo_intro.png" />
+	<div class="logo">
+		EAI Portal System
+	</div>
 	<div class="header_control">
 		<div class="header_row">
-			<a href="javascript:logout()"></a>
-			<div class="div-icon"><i class="fa fa-sign-out" aria-hidden="true"></i></div>
+			<a href="#"></a>
+			<div class="header_menu">EAI Interface</div>
+		</div>
+		<div class="header_row">
+			<a href="#"></a>
+			<div class="header_menu">EAI Resources</div>
+		</div>
+		<div class="header_row">
+			<a href="#"></a>
+			<div class="header_menu">EAI PM</div>
+		</div>
+		<div class="header_row">
+			<a href="#"></a>
+			<div class="header_menu">EAI Log</div>
+		</div>
+		<div class="header_row">
+			<a href="#"></a>
+			<div class="header_menu btn_menu">Admin</div>
 		</div>
 	</div>
 </div>

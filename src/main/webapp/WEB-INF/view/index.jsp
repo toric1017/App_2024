@@ -7,7 +7,7 @@
 <div class="content">
 	<div class="card login_logo">
 		<div class="card_title">
-			<h5>EAI Portal System</h5>
+			<h5>CJ EAI-Portal</h5>
 		</div>
 	</div>
 	
@@ -64,6 +64,6 @@
 			location.href = "/job/DashBoard";
 		});*/
 		
-		location.href = "/dashboard";
+		location.href = "/dashboard/index";
 	}
 </script>

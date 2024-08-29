@@ -11,12 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.eai_work.common.util.ResponseUtil;
 import com.eai_work.common.vo.ResponseVO;
 import com.eai_work.dashboard.service.DashboardService;
 
+@RequestMapping(value= {"/dashboard"})
 @SuppressWarnings({"rawtypes", "unchecked"})
 @Controller
 public class DashboardController {
@@ -27,9 +29,9 @@ public class DashboardController {
 	@SuppressWarnings("unused")
 	private final static Logger log = LoggerFactory.getLogger(DashboardController.class);
 	
-	@GetMapping("/dashboard")
-	public String dashboard(Map<String, Object>reqMap)throws Exception{
-		return "/dashboard";
+	@GetMapping("/index")
+	public String index(Map<String, Object>reqMap)throws Exception{
+		return "/dashboard/index";
 	}
 	
 	@PostMapping("/getDashBoardList")

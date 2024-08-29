@@ -5,7 +5,7 @@
 
 <html>
 <head>
-	<title>Meta-App-Manage</title>
+	<title>EAI-PORTAL</title>
 	
 	<!-- meta tag -->
 	<meta charset="UTF-8">
@@ -51,7 +51,7 @@
 <body>
 	<tiles:insertAttribute name="header"/>
 	<div class="body_wrapper">
-		<tiles:insertAttribute name="side"/>
+		<%-- <tiles:insertAttribute name="side"/> --%>
 		<tiles:insertAttribute name="body"/>
 	</div>
 </body>

@@ -15,7 +15,11 @@
 } 
 
 .header_control{
+	width: 60%;
 	margin: 0 50px 0px 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 
 .header_row{ 
@@ -30,6 +34,21 @@
 	outline: 0;
 	touch-action: none;
 	text-decoration: none;
+}
+
+.header_menu{
+	font-size: 18px;
+}
+
+.header_menu.btn_menu{
+	background: #426b1f;
+    color: white; 
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
 }
 
 .logoIntro {

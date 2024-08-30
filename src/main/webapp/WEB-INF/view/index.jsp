@@ -59,9 +59,14 @@
 			"userId" : $("#userId").val(),
 			"userPw" : $("#userPw").val()
 		};
-		 
-		CommonUtil.api.ajaxPost("/api/login/loginAjax", data, function(){
+		
+		if(data.userId == "undefined" || data.userId == null || data.userId == "")
+		{
 			location.href = "/dashboard/index";
-		});
+		}else{
+			CommonUtil.api.ajaxPost("/api/login/loginAjax", data, function(){
+				location.href = "/dashboard/index";
+			});
+		}
 	}
 </script>

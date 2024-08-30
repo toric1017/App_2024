@@ -19,14 +19,14 @@
 			<p>User ID</p>
 			<div class="card_control_icon_text">
 				<div class="div_icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-				<input type="text" id="user_id"/>
+				<input type="text" id="userId"/>
 			</div>
 		</div>
 		<div class="card_control">
 			<p>Password</p>
 			<div class="card_control_icon_text">
 				<div class="div_icon"><i class="fa fa-lock" aria-hidden="true"></i></div>
-				<input type="password" id="user_pw"/>
+				<input type="password" id="userPw"/>
 			</div> 
 		</div>
 		<div class="card_control input_btn_control">
@@ -56,14 +56,12 @@
 	var login = function(){
 
 		var data ={
-			"user_id" : $("#user_id").val(),
-			"user_pw" : $("#user_pw").val()
+			"userId" : $("#userId").val(),
+			"userPw" : $("#userPw").val()
 		};
 		 
-		/*CommonUtil.api.ajaxPost("/api/login/loginAjax", data, function(){
-			location.href = "/job/DashBoard";
-		});*/
-		
-		location.href = "/dashboard/index";
+		CommonUtil.api.ajaxPost("/api/login/loginAjax", data, function(){
+			location.href = "/dashboard/index";
+		});
 	}
 </script>

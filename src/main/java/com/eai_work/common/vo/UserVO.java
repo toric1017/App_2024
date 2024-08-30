@@ -1,51 +1,48 @@
 package com.eai_work.common.vo;
 
-import com.eai_work.common.util.CredentialUtil;
-
 public class UserVO {
 
-	String user_id;
-	String user_name;
-	String user_pw;
-	String user_login_token;
-	String user_auth;
-	String user_dept;
+	private String userId;
+	private String userName;
+	private String userPw;
+	private	String userLoginToken;
+	private	String userAuth;
+	private	String userDept;
 	
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-	public String getUser_name() {
-		return user_name;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public String getUser_pw() {
-		return user_pw;
+	public String getUserPw() {
+		return userPw;
 	}
-	public void setUser_pw(String user_id, String reg_dtm) {
-		this.user_pw = CredentialUtil.encryptSHA256(this.user_pw);
+	public void setUserPw(String userPw) {
+		this.userPw = userPw;
 	}
-	public String getUser_login_token() {
-		return user_login_token;
+	public String getUserLoginToken() {
+		return userLoginToken;
 	}
-	public void setUser_login_token(String user_login_token) {
-		this.user_login_token = user_login_token;
+	public void setUserLoginToken(String userLoginToken) {
+		this.userLoginToken = userLoginToken;
 	}
-	public String getUser_auth() {
-		return user_auth;
+	public String getUserAuth() {
+		return userAuth;
 	}
-	public void setUser_auth(String user_auth) {
-		this.user_auth = user_auth;
+	public void setUserAuth(String userAuth) {
+		this.userAuth = userAuth;
 	}
-	public String getUser_dept() {
-		return user_dept;
+	public String getUserDept() {
+		return userDept;
 	}
-	public void setUser_dept(String user_dept) {
-		this.user_dept = user_dept;
+	public void setUserDept(String userDept) {
+		this.userDept = userDept;
 	}
-	
 }

@@ -2,5 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="LoginMapper">
+	<select id="selectUserExist" parameterType="com.eai_work.common.vo.UserVO" resultType="Map">
+			SELECT
+				USER_ID,
+				REG_DTM
+			FROM
+				TB_USER_INFO
+			WHERE 
+				USE_YN = 'Y'
+				AND USER_ID = #{userId}
+	</select>
 	
+	<select id="selectUserInfoByUserId" parameterType="com.eai_work.common.vo.UserVO" resultType="com.eai_work.common.vo.UserVO">
+			SELECT
+				*
+			FROM
+				TB_USER_INFO
+			WHERE 1=1
+					AND USE_YN = 'Y'
+					AND USER_ID = #{userId}
+					AND USER_PW = #{userPw}
+	</select>
+	
+	<select id="selectUserInfoByUserToken" parameterType="com.eai_work.common.vo.UserVO" resultType="com.eai_work.common.vo.UserVO">
+			SELECT
+				*
+			FROM
+				TB_USER_INFO
+			WHERE 1=1
+				AND USE_YN = 'Y'
+				AND USER_LOGIN_TOKEN = #{userLoginToken}
+	</select>
 </mapper>

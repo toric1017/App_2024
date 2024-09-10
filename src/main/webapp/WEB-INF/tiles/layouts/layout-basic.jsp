@@ -37,12 +37,12 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			CommonUtil.session.apiKey = '<%= (String)session.getAttribute( String.valueOf( SessionEnum.SESSION_API_KEY ) ) %>';
-			CommonUtil.session.authKey = '<%= (String)session.getAttribute( String.valueOf( SessionEnum.SESSION_USER_AUTH ) ) %>';
-			
+			CommonUtil.session.userAuthCode = '<%= (String)session.getAttribute( String.valueOf( SessionEnum.SESSION_USER_AUTH_CODE ) ) %>';
+			CommonUtil.session.userId = '<%= (String)session.getAttribute( String.valueOf( SessionEnum.SESSION_USER_ID ) ) %>';
+			CommonUtil.session.userName = '<%= (String)session.getAttribute( String.valueOf( SessionEnum.SESSION_USER_NAME ) ) %>';
+
 			if(!StringUtil.isEquals("admin", CommonUtil.session.authKey)){
-				$(".check_auth_display").css({display: 'none'});
-				$(".customTable input").prop('disabled', true);
-				$(".customTable input").css({'box-shadow' : 'none'});
+				// ADMIN 메뉴 ENABLE
 			}
 			
 		});

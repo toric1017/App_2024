@@ -42,7 +42,7 @@
 			login();
 		});
 		 
-		$('#user_id, #user_pw').on('keydown', function(e){
+		$('#userId, #userPw').on('keydown', function(e){
 			if(e.keyCode == 13){
 				login(); 
 			}
@@ -59,13 +59,13 @@
 			"userId" : $("#userId").val(),
 			"userPw" : $("#userPw").val()
 		};
-		
+		 
 		if(data.userId == "undefined" || data.userId == null || data.userId == "")
 		{
 			location.href = "/dashboard/index";
 		}else{
 			CommonUtil.api.ajaxPost("/api/login/loginAjax", data, function(){
-				location.href = "/dashboard/index";
+				location.href = "/eaiInterface/index";
 			});
 		}
 	}

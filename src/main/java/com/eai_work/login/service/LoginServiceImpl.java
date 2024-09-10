@@ -48,7 +48,8 @@ public class LoginServiceImpl implements LoginService{
 		
 		session = request.getSession();
 		session.setAttribute(SessionEnum.SESSION_USER_ID.getSessionId(), userInfo.getUserId());
-		session.setAttribute(SessionEnum.SESSION_USER_AUTH.getSessionId(), userInfo.getUserAuth());
+		session.setAttribute(SessionEnum.SESSION_USER_NAME.getSessionId(), userInfo.getUserName());
+		session.setAttribute(SessionEnum.SESSION_USER_AUTH_CODE.getSessionId(), userInfo.getUserAuthCode());
 		session.setAttribute(SessionEnum.SESSION_API_KEY.getSessionId(), serverApiKey);
 		
 		return resMeg;

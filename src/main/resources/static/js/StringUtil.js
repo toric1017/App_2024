@@ -57,7 +57,7 @@ var StringUtil = {
 			return !StringUtil.isEmpty(val) ? parseInt(val, 10) : 0;
 		},
 		seperateComma : function(val){
-			
+			return !StringUtil.isEmpty(val) ? val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "";
 		}
 	}
 }

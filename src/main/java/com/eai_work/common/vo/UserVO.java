@@ -6,7 +6,7 @@ public class UserVO {
 	private String userName;
 	private String userPw;
 	private	String userLoginToken;
-	private	String userAuth;
+	private	String userAuthCode;
 	private	String userDept;
 	
 	public String getUserId() {
@@ -33,11 +33,11 @@ public class UserVO {
 	public void setUserLoginToken(String userLoginToken) {
 		this.userLoginToken = userLoginToken;
 	}
-	public String getUserAuth() {
-		return userAuth;
+	public String getUserAuthCode() {
+		return userAuthCode;
 	}
-	public void setUserAuth(String userAuth) {
-		this.userAuth = userAuth;
+	public void setUserAuthCode(String userAuthCode) {
+		this.userAuthCode = userAuthCode;
 	}
 	public String getUserDept() {
 		return userDept;

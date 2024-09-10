@@ -4,8 +4,10 @@
 
 var CommonUtil = {
 	session : {
-		authKey : "",
-		apiKey : ""
+		apiKey : ""	
+		, userId : ""
+		, userName : ""
+		, userAuthCode : ""
 	},
 	api : {
 				ajaxPost : function(_url, _data, _callback){

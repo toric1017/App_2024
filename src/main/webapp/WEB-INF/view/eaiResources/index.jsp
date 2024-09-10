@@ -12,6 +12,6 @@
 </script>
 <div class="card">
 	<div class="card_title">
-		dashboard
+		resources
 	</div>
 </div>

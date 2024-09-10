@@ -1,34 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<head>
-	<!-- meta tag -->
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript">
+	$(document).ready(function(){
+		fn_init();
+	})
 	
-	<!-- style -->
-	<link rel="stylesheet" href="/css/index.css"></link>
+	function fn_init(){
 
-	<!-- lib -->
-	<script src="/lib/jquery-3.7.1/jquery-3.7.1.js"></script>
-	<script src="/lib/jquery-modal-0.9.1/jquery.modal.min.js"></script>
-
-	<!-- common javascript -->
-	<script src="/js/StringUtil.js"></script>
-	<script src="/js/CommonUtil.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function(){
-			fn_init();
-		})
-		
-		function fn_init(){
-
-		}
-	</script>
-</head>
-<body>
-	<h1>profile</h1>
-</body>
-</html>
+	}
+</script>
+<div class="card">
+	<div class="card_title">
+		profile
+	</div>
+</div>

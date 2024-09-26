@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="/lib/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/lib/jquery-modal-0.9.1/jquery.modal.min.css">
 	<link rel="stylesheet" type="text/css" href="/lib/pikaday/pikaday.css">
+	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/header.css">
 	<link rel="stylesheet" href="/css/layout-basic.css">
 	<link rel="stylesheet" href="/css/side.css">

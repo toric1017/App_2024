@@ -19,4 +19,14 @@ public class eaiInterfaceController {
 	public String index(Map<String, Object>reqMap)throws Exception{
 		return "/eaiInterface/index";
 	}
+
+	@GetMapping({"/create"})
+	public String create(Map<String, Object>reqMap)throws Exception{
+		return "/eaiInterface/create";
+	}
+
+	@GetMapping({"/detail"})
+	public String detailString(Map<String, Object>reqMap)throws Exception{
+		return "/eaiInterface/detail";
+	}
 }

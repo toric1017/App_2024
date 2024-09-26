@@ -1,0 +1,230 @@
+/* reset.css */
+/* 모든 기본 마진, 패딩, 보더를 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HTML5 요소들 초기화 */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    font-family: sans-serif;
+}
+
+/* 리스트 스타일 제거 */
+ol, ul {
+    list-style: none;
+}
+
+/* 블록 요소로 변경 */
+blockquote, q {
+    quotes: none;
+}
+blockquote::before, blockquote::after,
+q::before, q::after {
+    content: '';
+    content: none;
+}
+
+/* 테이블 셀 패딩과 보더 초기화 */
+table {
+    width:100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* 링크 장식 제거 */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 이미지 크기를 부모 요소에 맞춤 */
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+}
+
+/* 버튼 스타일 초기화 */
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* 폼 요소 초기화 */
+input, textarea, select, button {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    border-radius: 0;
+}
+
+/* 폼 요소 아웃라인 제거 */
+input:focus, textarea:focus, select:focus, button:focus {
+    outline: none;
+}
+
+/* 상속이 적용되지 않는 요소들에 기본 글꼴 설정 */
+input, button, select, textarea {
+    font: inherit;
+}
+
+/* 브라우저 기본 스크롤바 스타일 제거 */
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+
+.page__data-list table{width: 100%;border-collapse: collapse;background-color: white;border-radius: 8px;overflow: hidden;box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);}
+.page__data-list th, .page__data-list td {padding:15px;text-align: left;}
+.page__data-list th {background-color:#343a40;color: white;font-weight: 600;text-transform: uppercase;font-size: 14px;}
+.page__data-list td {color: #555;font-size: 14px;}
+.page__data-list tr {border-bottom: 1px solid #e9ecef;transition: background-color 0.2s ease;}
+.page__data-list tr:last-child {border-bottom: none;}
+.page__data-list tr:nth-child(even) {background-color: #f8f9fa;}
+.page__data-list tr:hover{background-color: #f1f3f5;}
+
+.page__data-form h3{font-size:19px;color:#111;}
+.page__data-form table {width:100%;margin-top:8px;border-collapse: collapse;border-radius:4px;overflow: hidden;box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);overflow:hidden;}
+.page__data-form th, .page__data-form td {padding:4px 8px;border:1px solid #ddd;}
+.page__data-form th.th__title{height:40px;}
+.page__data-form th {background-color: #fafafa;font-weight:600;font-size: 14px;}
+.page__data-form+.page__data-form{margin-top:40px;}
+.page__data-form input[type="text"]{width:100%;height:36px;padding:8px;font-size:14px;border:1px solid #ddd;border-radius:4px;box-sizing:border-box;}
+.page__data-form textarea{width:100%;min-height:100px;padding:8px;font-size:14px;border:1px solid #ddd;border-radius:4px;box-sizing:border-box;}
+.page__data-form select{min-width:200px;height:36px;padding:0 8px;font-size:14px;border:1px solid #ddd;border-radius:4px;box-sizing:border-box;}
+
+.page__data-detail h3{font-size:19px;color:#111;}
+.page__data-detail table {width:100%;margin-top:8px;border-collapse: collapse;border-radius:4px;overflow: hidden;box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);overflow:hidden;}
+.page__data-detail th, .page__data-detail td {padding:12px 15px;border:1px solid #ddd;font-size:14px;word-break:break-all;}
+.page__data-detail th.th__title{height:40px;}
+.page__data-detail th {background-color: #fafafa;font-weight:600;font-size: 14px;}
+.page__data-detail+.page__data-detail{margin-top:40px;}
+.page__data-detail input[type="text"]{width:100%;height:36px;padding:8px;font-size:14px;border:1px solid #ddd;border-radius:4px;box-sizing:border-box;}
+.page__data-detail textarea{width:100%;min-height:100px;padding:8px;font-size:14px;border:1px solid #ddd;border-radius:4px;box-sizing:border-box;}
+.page__data-detail select{min-width:200px;height:36px;padding:0 8px;font-size:14px;border:1px solid #ddd;border-radius:4px;box-sizing:border-box;}
+
+
+#wrap{width:1280px;margin:0 auto;padding-top:60px;}
+header{position:fixed;top:0;left:0;width:100%;height:60px;border-bottom:1px solid #ddd;background:#fff;}
+header .header_inner-wrap{display:flex;width:1280px;margin:0 auto;box-sizing:border-box;justify-content:space-between;align-items:center;}
+header .header_inner-wrap h1{font-size:28px;color:#426b1f;line-height:60px;}
+header .header_inner-wrap .gnb__menu-wrap ul{display:flex;align-items:center;}
+header .header_inner-wrap .gnb__menu-wrap ul li{margin-left:20px;}
+header .header_inner-wrap .gnb__menu-wrap ul li:last-child{margin-left:40px;}
+header .header_inner-wrap .gnb__menu-wrap ul a.btn__mynfo{display:block;padding:8px 20px;color:#fff;background:#426b1f;border-radius:4px;line-height:1.2;}
+header .header_inner-wrap .gnb__menu-wrap ul a{font-size:16px;}
+
+header .header_inner-wrap .gnb__menu-wrap ul a.active{color:#426b1f;font-weight:700;text-decoration:underline;}
+
+.container{padding:50px 0;}
+.page__util-box{display:flex;width:100%;padding-bottom:10px;line-height:1.2;border-bottom:1px solid #111;justify-content:space-between;align-items:center;}
+.page__util-box h2{font-size:24px;color:#111;}
+.page__util-box .search__item-wrap{}
+.page__data-wrap{margin-top:40px;}
+.page__data-util--box{display:flex;justify-content:space-between;align-items:center;}
+.page__data-util--box .page__data-cnt{color:#aaa;}
+.page__data-list{margin-top:8px;}
+.page__detail-util--box{font-size:0;text-align:right;}
+.page__detail-util--box [class^='btn__']+[class^='btn__']{margin-left:8px;}
+
+.btn__white{display:inline-block;padding:8px 16px;font-size:14px;color:#111;font-weight:700;border:1px solid #111;border-radius:4px;transition:all .4s;}
+.btn__white:hover{background-color:#ddd;}
+.btn__black{display:inline-block;padding:8px 16px;font-size:14px;color:#fff;font-weight:700;border:1px solid #111;background:#111;border-radius:4px;transition:all .4s;}
+.btn__black:hover{background-color:#666;}
+
+
+/* 검색창 컨테이너 */
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* 날짜 검색창 스타일 */
+.search__item-wrap{position:relative;}
+.search__item-wrap input[type="date"],
+.search__item-wrap input[type="text"] {width:150px;height:40px;padding: 10px;border: 1px solid #ddd;border-radius:20px;font-size: 14px;}
+.search__item-wrap input[type="text"]{width:240px;padding-right:30px;}
+.search__item-wrap .important label{display:inline-block;position:relative;padding-right:16px;}
+.search__item-wrap .important label:after{content:'';position:absolute;top:0;right:8px;width:3px;height:3px;background:#ff0000;border-radius:100%;}
+.search__item-wrap .btn__search{position:absolute;top:50%;right:4px;width:32px;height:32px;border-radius:50%;transform:translateY(-50%);}
+.search__item-wrap .btn__search svg{width:32px;height:32px;}
+
+/* 검색 버튼 스타일 */
+.search-container button {
+    padding: 10px 20px;
+    background-color: #343a40;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.search-container button:hover {
+    background-color: #495057;
+}
+
+    /* 페이징 컨테이너 설정 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 40px 0;
+}
+
+/* 페이징 버튼 기본 스타일 */
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a {
+    display: block;
+    padding: 10px 15px;
+    color: #343a40;
+    text-decoration: none;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    background-color: white;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* 현재 페이지 스타일 */
+.pagination li.active a {
+    background-color: #343a40; /* 진한 회색 */
+    color: white;
+    border-color: #343a40;
+}
+
+/* 버튼에 마우스 올렸을 때 스타일 */
+.pagination li a:hover {
+    background-color: #e9ecef;
+    color: #343a40;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 비활성화된 버튼 스타일 */
+.pagination li.disabled a {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #e9ecef;
+}

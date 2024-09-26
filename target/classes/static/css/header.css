@@ -15,21 +15,59 @@
 } 
 
 .header_control{
+	width: 60%;
+    height: 70%;
 	margin: 0 50px 0px 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 
 .header_row{ 
-	cursor:pointer;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    width: 15%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.header_row.hover_row:hover {
+    background: #999;
+    color: white;
+}
+ 
+.header_row.hover_row.active {
+    background: #999;
+    color: white;
 }
 
 .header_row a {
 	display : inline-block;
 	position: absolute;
-	width: 55px;
-    height: 50px; 
+	width: 100%;
+    height: 100%;
 	outline: 0;
 	touch-action: none;
 	text-decoration: none;
+}
+
+.header_menu{
+	font-size: 18px;
+}
+
+.header_menu.btn_menu{
+	background: #426b1f;
+    color: white; 
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
 }
 
 .logoIntro {

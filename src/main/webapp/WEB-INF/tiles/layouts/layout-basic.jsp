@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="/css/layout-basic.css">
 	<link rel="stylesheet" href="/css/side.css">
 	<link rel="stylesheet" href="/css/filter.css">
-	<link rel="stylesheet" href="/css/pagination.css">
+	<%-- <link rel="stylesheet" href="/css/pagination.css"> --%>
 	
 	<!-- javascript / lib -->
 	<script src="/lib/jquery-3.7.1/jquery-3.7.1.js"></script>

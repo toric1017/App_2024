@@ -21,12 +21,11 @@ textarea:focus, input:focus{
 }
 
 .body_wrapper{
-  position: fixed;
   margin: 80px auto;
   width: 100%;
-  height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
+  flex-wrap: wrap; 
 }
 
 .content { 

@@ -10,8 +10,27 @@
 
 	}
 </script>
-<div class="card">
+
+<div class="card card_w40pcent">
 	<div class="card_title">
 		dashboard
+	</div>
+</div>
+
+<div class="card card_w40pcent">
+	<div class="card_title">
+		dashboard 2
+	</div>
+</div>
+
+<div class="card card_w40pcent">
+	<div class="card_title">
+		dashboard 3
+	</div>
+</div>
+
+<div class="card card_w40pcent">
+	<div class="card_title">
+		dashboard 4
 	</div>
 </div>

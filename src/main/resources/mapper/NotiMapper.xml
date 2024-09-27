@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="NotiMapper">
+	
+    <select id="getNotiList" parameterType="Map" resultType="Map">
+		SELECT
+            NOTI_SEQ
+            , USER_ID
+            , NOTI_SUBJECT
+            , NOTI_CONTENT
+            , SEEN_YN
+            , MAIL_YN 
+        FROM
+            TB_NOTI
+        WHERE 1=1
+            AND USE_YN = 'Y'
+            <if test='notiYn != null and notiYn != ""'>
+                AND NOTI_YN = #{notiYn} 
+            </if>
+            <if test='sessionUserId != null and sessionUserId != ""'>
+                AND USER_ID = #{sessionUserId} 
+            </if>
+            <if test='groupId != null and groupId != ""'>
+                AND GROUP_ID = #{groupId}
+            </if>
+        ORDER BY
+            NOTI_SEQ DESC
+	</select>
+	
+    <update id="saveNotiItem" parameterType="Map">
+        WITH upsert AS
+        (
+            UPDATE 
+                TB_NOTI
+            SET 
+                UPDR_ID = #{sessionUserId}
+                , UPD_DTM = NOW()
+                <if test='notiContent != null and notiContent != ""'>
+                , NOTI_CONTENT = #{notiContent}
+                </if>
+                <if test='notiYn != null and notiYn != ""'>
+                , NOTI_YN = #{notiYn}
+                </if>
+                <if test='seenYn != null and seenYn != ""'>
+                , SEEN_YN = #{seenYn}
+                </if>
+                <if test='mailYn != null and mailYn != ""'>
+                , MAIL_YN = #{mailYn}
+                </if>
+                <if test='useYn != null and useYn != ""'>
+                , USE_YN = #{useYn}
+                </if>
+            WHERE
+                NOTI_SEQ = #{notiSeq}
+            RETURNING *
+        )
+        INSERT INTO TB_NOTI
+        (
+            NOTI_SEQ
+            , NOTI_CONTENT
+            , GROUP_ID
+            , USER_ID
+            , SEEN_YN
+            , MAIL_YN
+            , USE_YN
+            , REGR_ID
+            , REG_DTM
+            , UPDR_ID
+            , UPD_DTM
+        )
+        SELECT  
+            nextval('TB_NOTI_SEQ')
+            , #{notiContent}
+            , #{groupId}
+            , #{userId}
+            , 'N'
+            , 'N'
+            , 'Y'
+            , #{sessionUserId}
+            , NOW()
+            , NULL
+            , NULL
+        WHERE NOT EXISTS(SELECT * FROM upsert)
+    </update>
+
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT" follow="true">
+            <!-- <PatternLayout disableAnsi="false"  pattern="%highlight{%d{HH:mm:ss.SSS} %-5level %logger{36}.%M() @%L - %msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=black, DEBUG=green bold, TRACE=blue}"/> -->
+            <PatternLayout disableAnsi="false" pattern="%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} %highlight{${LOG_LEVEL_PATTERN:-%5p}}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=green, DEBUG=green bold, TRACE=blue} %style{${sys:PID}}{magenta} [%15.15t] %style{%-40.40C{1.}}{cyan} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="jdbc" level="OFF" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+        <Logger name="jdbc.sqlonly" level="OFF" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+        <Logger name="jdbc.sqltiming" level="DEBUG" additivity="false">
+            <AppenderRef ref="STDOUT">
+                <ThreadContextMapFilter onMatch="DENY" onMismatch="NEUTRAL">
+                    <KeyValuePair key="log" value="N"/>                         <!-- Key값 log가 N일 경우에는 로그 출력하지 않음 -->
+                </ThreadContextMapFilter>
+            </AppenderRef>
+        </Logger>
+        <Logger name="jdbc.audit" level="OFF" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+        <Logger name="jdbc.resultset" level="OFF" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+        <Logger name="jdbc.resultsettable" level="OFF" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+        <Logger name="jdbc.connection" level="OFF" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+
+        <Root level="INFO">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+</Configuration>

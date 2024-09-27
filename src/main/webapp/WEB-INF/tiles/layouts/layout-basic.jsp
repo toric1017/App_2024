@@ -9,6 +9,7 @@
 	
 	<!-- meta tag -->
 	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!-- style -->
@@ -18,7 +19,7 @@
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/header.css">
 	<link rel="stylesheet" href="/css/layout-basic.css">
-	<link rel="stylesheet" href="/css/side.css">
+	<%-- <link rel="stylesheet" href="/css/side.css"> --%>
 	<link rel="stylesheet" href="/css/filter.css">
 	<%-- <link rel="stylesheet" href="/css/pagination.css"> --%>
 	
@@ -41,11 +42,18 @@
 			CommonUtil.session.userAuthCode = '<%= (String)session.getAttribute( String.valueOf( SessionEnum.SESSION_USER_AUTH_CODE ) ) %>';
 			CommonUtil.session.userId = '<%= (String)session.getAttribute( String.valueOf( SessionEnum.SESSION_USER_ID ) ) %>';
 			CommonUtil.session.userName = '<%= (String)session.getAttribute( String.valueOf( SessionEnum.SESSION_USER_NAME ) ) %>';
+			CommonUtil.session.websocketUrl = '<%= (String)session.getAttribute( String.valueOf( SessionEnum.SESSION_WEBSOCKETURL ) ) %>';
+			CommonUtil.session.notiYn = '<%= (String)session.getAttribute( String.valueOf( SessionEnum.SESSION_NOTI_YN ) ) %>';
 
-			if(!StringUtil.isEquals("admin", CommonUtil.session.authKey)){
-				// ADMIN 메뉴 ENABLE
+			// 관리자 메뉴 오픈
+			if(StringUtil.isEquals("admin", CommonUtil.session.authKey)){
+				
 			}
-			
+
+			// 실시간 알림 소켓연결
+			if(StringUtil.isEquals("Y", CommonUtil.session.notiYn)){
+				CommonUtil.websocket.init();
+			}
 		});
 	</script>
 </head>

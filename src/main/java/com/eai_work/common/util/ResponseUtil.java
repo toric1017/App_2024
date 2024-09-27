@@ -8,7 +8,6 @@ import com.eai_work.common.vo.ResponseVO;
 @SuppressWarnings("rawtypes")
 public class ResponseUtil {
 
-	
 	public static ResponseEntity<ResponseVO> responseSuccessEntity(){
 		ResponseVO<Object> vo = new ResponseVO<Object>("S", "Success");
 		return ResponseEntity.ok().body(vo);
@@ -43,5 +42,4 @@ public class ResponseUtil {
 		ResponseVO<Object> vo = new ResponseVO<Object>("E", "Unauthorized");
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(vo);
 	}
-	
 }

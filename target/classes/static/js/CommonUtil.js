@@ -8,6 +8,8 @@ var CommonUtil = {
 		, userId : ""
 		, userName : ""
 		, userAuthCode : ""
+		, websocketUrl : ""
+		, notiYn : ""
 	},
 	api : {
 				ajaxPost : function(_url, _data, _callback){
@@ -38,6 +40,19 @@ var CommonUtil = {
 						}
 					});
 				
+				},
+				ajaxPostPromise : function(_url, _data){
+					return $.ajax({
+						type : 'post',
+						url : _url,
+						headers : {
+							"Content-Type" : "application/json",
+							"X-HTTP-Method-Override" : "POST",
+							"Authorization" : CommonUtil.session.apiKey
+						},
+						dataType : 'json',
+						data : JSON.stringify(_data)
+					});
 				}
 	},
 	chart : {
@@ -149,6 +164,49 @@ var CommonUtil = {
 					closeClass: 'icon-remove',
 					closeText: '⨉'
 				});
+			}
+		}
+	}, 
+	websocket: {
+		ws : null,
+		init : function(){
+			if(CommonUtil.websocket.ws == null && !StringUtil.isEmpty(CommonUtil.session.websocketUrl)){
+				CommonUtil.websocket.ws = new WebSocket(CommonUtil.session.websocketUrl);
+				CommonUtil.websocket.ws.onopen = function() {
+					console.log("connected");
+				};
+				CommonUtil.websocket.ws.onmessage = function(event) {	
+					var data = JSON.parse(event.data);
+					CommonUtil.websocket.actions(data);
+				};
+
+				CommonUtil.websocket.ws.onclose = function() {
+					console.log("disconnected");
+				};
+				CommonUtil.websocket.ws.onerror = function() {
+					console.log("error");
+				};
+			}	
+		},
+		send : function(_data){
+			if(CommonUtil.websocket.ws.readyState == WebSocket.OPEN){
+				ws.send(_data);
+			}
+		},
+		close : function(){
+			if(CommonUtil.websocket.ws.readyState == WebSocket.OPEN){
+				ws.close();
+			}
+		}, 
+		actions : function(data){
+			if(CommonUtil.websocket.ws.readyState == WebSocket.OPEN){
+				if(data.dataType == "noti"){
+					$('.noti_btn_icon').removeClass('hidden');
+					
+					// Notification.requestPermission().then(function(){
+					// 	new Notification('[EAI-PORTAL] 알림이 도착했습니다.', { body: data.noti_subject, icon: img });
+					// });
+				}
 			}
 		}
 	}

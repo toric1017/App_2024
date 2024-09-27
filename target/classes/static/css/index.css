@@ -102,7 +102,7 @@ textarea:focus, input:focus{
 	padding: 3px 10px 3px 10px;
     font-size: 18px;
     font-weight: bold;
-    background-color: #2196F3;
+    background-color: #426b1f;
     color: white;
     border: none;
     border-radius: 5px;
@@ -113,5 +113,5 @@ textarea:focus, input:focus{
 }
 
 .card .card_control input[type="button"]:hover{
-	background-color: #64baff;
+	background-color: #426b1fd6;
 }

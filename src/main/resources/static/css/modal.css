@@ -4,7 +4,7 @@
 	top: 0px;
     right: 0px;
     width: 60px;
-    height: 34px;
+    height: 33px;
     color: #fff;
     line-height: 1.75;
     font-weight: bold;
@@ -38,9 +38,9 @@
 .modal .modal-header {
 	display: flex;
     height: 35px;
-    background: #2196F3;
-    color: white;
-    font-size: 20px;
+    background: #426b1fd6;
+    color: white; 
+    font-size: 18px;
     font-weight: bold;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;

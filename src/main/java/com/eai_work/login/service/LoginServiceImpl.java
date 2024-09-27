@@ -33,7 +33,7 @@ public class LoginServiceImpl implements LoginService{
 		HttpSession session = null;
 		Map<String, Object> userExist = loginDAO.selectUserExist(vo);
 		UserVO userInfo = null;
-		String resMeg = "";
+		String resMeg = ""; 
 		
 		if(userExist == null || userExist.isEmpty()) {
 			throw new Exception( "[LoginService] : 유저아이디가 없거나 비밀번호가 틀립니다." );
@@ -51,6 +51,8 @@ public class LoginServiceImpl implements LoginService{
 		session.setAttribute(SessionEnum.SESSION_USER_NAME.getSessionId(), userInfo.getUserName());
 		session.setAttribute(SessionEnum.SESSION_USER_AUTH_CODE.getSessionId(), userInfo.getUserAuthCode());
 		session.setAttribute(SessionEnum.SESSION_API_KEY.getSessionId(), serverApiKey);
+		session.setAttribute(SessionEnum.SESSION_WEBSOCKETURL.getSessionId(), "/websocket");
+		session.setAttribute(SessionEnum.SESSION_NOTI_YN.getSessionId(), userInfo.getNotiYn());
 		
 		return resMeg;
 	}

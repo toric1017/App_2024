@@ -8,6 +8,7 @@ public class UserVO {
 	private	String userLoginToken;
 	private	String userAuthCode;
 	private	String userDept;
+	private String notiYn;
 	
 	public String getUserId() {
 		return userId;
@@ -44,5 +45,11 @@ public class UserVO {
 	}
 	public void setUserDept(String userDept) {
 		this.userDept = userDept;
+	}
+	public String getNotiYn() {
+		return notiYn;
+	}
+	public void setNotiYn(String notiYn) {
+		this.notiYn = notiYn;
 	}
 }

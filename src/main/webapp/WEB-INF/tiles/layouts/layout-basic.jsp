@@ -46,7 +46,7 @@
 			CommonUtil.session.notiYn = '<%= (String)session.getAttribute( String.valueOf( SessionEnum.SESSION_NOTI_YN ) ) %>';
 
 			// 관리자 메뉴 오픈
-			if(StringUtil.isEquals("admin", CommonUtil.session.authKey)){
+			if(StringUtil.isEquals("admin", CommonUtil.session.userAuthCode)){
 				
 			}
 

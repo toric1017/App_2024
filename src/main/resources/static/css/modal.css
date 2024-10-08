@@ -50,13 +50,14 @@
 
 .modal .modal-control {
 	display: flex;
-	height: 35px;
-    float: right;
+    height: 35px;
     margin: 10px 0 10px 0;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal .modal-content {
-	display: flex;
+    
 }
 
 .modal .modal-content.column {

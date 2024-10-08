@@ -8,7 +8,7 @@
             UI.USER_ID
             , COALESCE(UI.NOTI_YN, 'N') AS NOTI_YN
             , (
-                SELECT COUNT(1) FROM TB_NOTI WHERE USER_ID = UI.USER_ID
+                SELECT COUNT(1) FROM TB_NOTI WHERE USER_ID = UI.USER_ID AND SEEN_YN = 'N'
             ) AS NOTI_CNT
         FROM    
             TB_USER_INFO UI

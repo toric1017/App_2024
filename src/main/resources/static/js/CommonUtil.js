@@ -151,12 +151,12 @@ var CommonUtil = {
 	},
 	modal: {
 		modal_detail : {
-			init : function(_modal_header, _modal_context){
+			init : function(_modal_id, _modal_header, _modal_context){
 				if(!StringUtil.isEmpty(_modal_header)){
-					$("#modal-header").html(_modal_header);
+					$(_modal_id + " #modal-header").html(_modal_header);
 				}
 				if(!StringUtil.isEmpty(_modal_context)){
-					$("#modal-context").html(_modal_context);
+					$(_modal_id + " #modal-context").html(_modal_context);
 				}
 			},
 			open : function(_modal_id){
@@ -201,11 +201,19 @@ var CommonUtil = {
 		actions : function(data){
 			if(CommonUtil.websocket.ws.readyState == WebSocket.OPEN){
 				if(data.dataType == "noti"){
-					$('.noti_btn_icon').removeClass('hidden');
+					$(".noti_username").removeClass('left_animated');
+					$(".noti_username").addClass('right_animated');
+
+					$(".noti_btn_icon").removeClass('hidden_animated');
+					$(".noti_btn_icon").addClass('visible_animated');
+				
+					Notification.requestPermission().then(function(){
+						new Notification('[EAI-PORTAL] 알림이 도착했습니다.', { body: data.noti_subject, icon: '/favicon.ico' });
+					});
+				}
+
+				if(data.dataType == "mouse"){
 					
-					// Notification.requestPermission().then(function(){
-					// 	new Notification('[EAI-PORTAL] 알림이 도착했습니다.', { body: data.noti_subject, icon: img });
-					// });
 				}
 			}
 		}

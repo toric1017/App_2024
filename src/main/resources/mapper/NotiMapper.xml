@@ -25,7 +25,7 @@
                 AND GROUP_ID = #{groupId}
             </if>
         ORDER BY
-            NOTI_SEQ DESC
+            NOTI_SEQ::int desc;
 	</select>
 	
     <update id="saveNotiItem" parameterType="Map">
@@ -36,9 +36,6 @@
             SET 
                 UPDR_ID = #{sessionUserId}
                 , UPD_DTM = NOW()
-                <if test='notiContent != null and notiContent != ""'>
-                , NOTI_CONTENT = #{notiContent}
-                </if>
                 <if test='notiYn != null and notiYn != ""'>
                 , NOTI_YN = #{notiYn}
                 </if>
@@ -58,11 +55,13 @@
         INSERT INTO TB_NOTI
         (
             NOTI_SEQ
+            , NOTI_SUBJECT
             , NOTI_CONTENT
             , GROUP_ID
             , USER_ID
             , SEEN_YN
             , MAIL_YN
+            , NOTI_YN
             , USE_YN
             , REGR_ID
             , REG_DTM
@@ -71,9 +70,11 @@
         )
         SELECT  
             nextval('TB_NOTI_SEQ')
+            , #{notiSubject}
             , #{notiContent}
             , #{groupId}
             , #{userId}
+            , 'N'
             , 'N'
             , 'N'
             , 'Y'

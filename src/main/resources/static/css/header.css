@@ -69,10 +69,11 @@
     align-items: center;
     justify-content: center;
     border-radius: 5px;
+    position: relative;
 }
 
 .noti_btn_icon {
-    margin: 2px 4px 0px 2px;
+    margin: 3px 2px 0px 2px;
     width: 21px;
     height: 21px;
     display: flex;
@@ -131,7 +132,6 @@
 }
 
 .noti_card p {
-    margin: 0 10px 0 10px; 
     display: flex;
     align-items: center; 
 }
@@ -149,7 +149,6 @@
 .noti_card .noti_card_row {
     margin: 5px; 
     display: flex;
-    justify-content: space-between;
 }
 
 .noti_card_transparent {
@@ -168,7 +167,6 @@
 
 .noti_list .noti_el {
     display: flex;
-    margin: 0px 10px 0px 10px;
     padding: 3px 0 3px 0; 
     cursor: pointer;
 }
@@ -188,17 +186,49 @@
     background: #FF9700d6; 
     color: white;
     border-radius: 5px;
-    padding: 0px 5px 2px 5px;
+    padding: 4px 4px 4px 4px; 
+}
+
+.noti_dot {
+    font-size: 8px;
+    margin: 2px 0 0 0;
 }
 
 .div-icon{
     display: inline-block;
     color: #4F4F4F;
-    font-size: 20px;
+    font-size: 30px;
     line-height: 20px;
-    width: 20px;
-    height: 22px;
+    width: 30px;
+    height: 30px;
     text-align: center;
-    vertical-align: bottom;
-    padding: 5px 0px 0px 5px;
+    vertical-align: bottom; 
 } 
+
+.header_slider {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 30px 15px 30px;
+    border-bottom: 2px solid black;
+    z-index: 100;
+}
+
+.header_slider .header_slider_row {
+    position: relative;
+    font-size: 25px;
+    margin: 10px 0 10px 0;
+}
+
+.header_slider .header_slider_row a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+}

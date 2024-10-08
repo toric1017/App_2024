@@ -1,31 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.eai_work.common.util.SessionEnum"%>
+<%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
 <!DOCTYPE html>
 
 <div class="header">
-	<div class="logo">
+	<div class="header_control display_responsive">
+		<div class="header_row">
+			<a href="javascript:toggleSide()"></a>
+			<div class="div-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
+		</div>
+	</div>
+	<div class="logo display_responsive_none">
 		EAI Portal System
 	</div>
 	<div class="header_control header_menu">
-		<div class="header_row hover_row">
-			<a href="/eaiInterface/index"></a>
+		<div class="header_row hover_row display_responsive_none">
+			<a href="/eaiInterface/"></a>
 			<div class="header_menu">EAI Interface</div>
 		</div>
-		<div class="header_row hover_row">
-			<a href="/eaiResources/index"></a>
+		<div class="header_row hover_row display_responsive_none">
+			<a href="/eaiResources/"></a>
 			<div class="header_menu">EAI Resources</div>
 		</div>
-		<div class="header_row hover_row">
-			<a href="/eaiPm/index"></a>
+		<div class="header_row hover_row display_responsive_none">
+			<a href="/eaiPm/"></a>
 			<div class="header_menu">EAI PM</div>
 		</div>
-		<div class="header_row hover_row">
-			<a href="/eaiLog/index"></a>
+		<div class="header_row hover_row display_responsive_none">
+			<a href="/eaiLog/"></a>
 			<div class="header_menu">EAI Log</div>
 		</div>
 		<div class="header_row">
 			<div class="header_menu btn_menu noti_btn" id="noti_btn"></div>
 		</div> 
+	</div>
+</div>
+
+<div class="header_slider hidden">
+	<div class="header_slider_row">
+		<a href="/eaiInterface/"></a>
+		<div class="header_slider_menu">EAI Interface</div>
+	</div>
+	<div class="header_slider_row">
+		<a href="/eaiResources/"></a>
+		<div class="header_slider_menu">EAI Resources</div>
+	</div>
+	<div class="header_slider_row">
+		<a href="/eaiPm/"></a>
+		<div class="header_slider_menu">EAI PM</div>
+	</div>
+	<div class="header_slider_row">
+		<a href="/eaiLog/"></a>
+		<div class="header_slider_menu">EAI Log</div>
 	</div>
 </div>
 
@@ -35,10 +62,10 @@
 		<div class="noti_card_wrapper">
 			<div class="noti_card">
 				<div class="noti_card_header">
-					<p>설정</p>
+					<p class="m-w10"><i class='fa fa-gear'></i>&nbsp;설정</p>
 				</div>
 				<div class="noti_card_row" id="noti_user_info_row">
-					<p>브라우저 알림 ON/OFF</p>
+					<p class="m-w10"><i class='fa fa-circle fa-lg noti_dot'></i></p><p>브라우저 알림 ON/OFF</p>
 					<label class="toggle_switch">
 						<input type="checkbox" name="noti_yn"></input> 
 						<span class="toggle_slider round"></span>
@@ -47,12 +74,27 @@
 			</div>
 			<div class="noti_card">
 				<div class="noti_card_header">
-					<p>알림 리스트</p>
+					<p class="m-w10"><i class='fa fa-bell-o'></i>&nbsp;알림 리스트</p>
 				</div>
 				<div class="noti_card_row">
-					<div class="noti_list" id="noti_list"></div>
+					<ul class="noti_list" id="noti_list"></ul>
+				</div>
+			</div>	
+		<c:set var="userAuthCode" value='<%= (String)session.getAttribute( String.valueOf( SessionEnum.SESSION_USER_AUTH_CODE ) ) %>' ></c:set>
+		<c:if test="${userAuthCode == 'ADMIN'}">
+			<div class="noti_card">
+				<div class="noti_card_header">
+					<p class="m-w10"><i class='fa fa-gear'></i>&nbsp;관리자 메뉴</p>
+				</div>
+				<div class="noti_card_row">
+					<ul class="noti_list">
+						<li class="noti_el" id="sendNoti">
+							<p class="m-w10"><i class="fa fa-circle fa-lg noti_dot"></i></p><p>알림 보내기</p>
+						</li>
+					</ul>
 				</div>
 			</div>
+		</c:if>
 			<div class="noti_card noti_card_transparent" id="noti_logout">
 				<div class="div-icon"><i class="fa fa-sign-out" aria-hidden="true"></i></div>
 				<p>로그아웃</p> 
@@ -64,6 +106,7 @@
 </div>
  
 <jsp:include page="../../view/common/modal-textarea.jsp" />
+<jsp:include page="../../view/common/modal-sendNoti.jsp" />
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -77,13 +120,17 @@
 		});
  
 		var notiHTML = '';
-		notiHTML += '<span class="noti_btn_icon hidden">';
+		notiHTML += '<span class="noti_btn_icon hidden_animated">';
 		notiHTML += '<i class="fa fa-exclamation" aria-hidden="true" style="padding: 0px 2px 0 2px;"></i>';
-		notiHTML += '</span> ' + CommonUtil.session.userName;
-		$("#noti_btn").html(notiHTML); 
+		notiHTML += '</span><span class="noti_username">' + CommonUtil.session.userName + '</span>';
+		$("#noti_btn").html(notiHTML);  
 
-		$("#noti_btn").on('click', async function(){
-			$(".noti_btn_icon").addClass('hidden');
+		$("#noti_btn").on('click', async function(){ 
+			$(".noti_btn_icon").removeClass('visible_animated');
+			$(".noti_btn_icon").addClass('hidden_animated');
+
+			$(".noti_username").removeClass('right_animated');
+			$(".noti_username").addClass('left_animated');
 
 			if($(".header_noti").hasClass('hidden')){
 				$(".header_noti").removeClass('hidden'); 
@@ -98,17 +145,27 @@
 				$(".header_noti").addClass('hidden');
 			} 
 		});
- 
+
+		$('.card').on('click', function(e){
+			if(e.target.id != 'noti_btn' && !$(".header_noti").hasClass('hidden')){
+				$(".header_noti").addClass('hidden');
+			}
+		});
+
 		$("#noti_user_info_row").on('click', 'input[name="noti_yn"]', function(){
 			updateUserInfo($(this).is(":checked"));
 		});
 
-		$("#noti_list").on('click', '.noti_el',function(){
+		$("#noti_list").on('click', 'li[name="noti_detail"]',function(){
 			openNotiDetailPopup($(this), $(this).data('element'));
 		});
 
 		$("#noti_logout").on('click', function(){
 			logout(); 
+		});
+
+		$("#sendNoti").on('click', function(){
+			openSendNotiPopup();
 		});
 
 		getUserInfo();
@@ -133,11 +190,24 @@
 			};
 			
 			CommonUtil.api.ajaxPost("/api/user/getUserInfoAjax", reqData, function(res){
-				var notiYn = res.data.noti_yn;
-				$('#noti_user_info_row input[name="noti_yn"]').prop('checked', (notiYn == 'Y') ? true : false);
-				resolve();
+				if(StringUtil.isEmpty(res.data)){
+					reject('userData doesnot exist');
+				}else{
+					var notiYn = res.data.noti_yn;
+					$('#noti_user_info_row input[name="noti_yn"]').prop('checked', (notiYn == 'Y') ? true : false);
+
+					var notiCnt = res.data.noti_cnt;
+					if(StringUtil.number.stringToNumber(notiCnt) > 0){
+						$(".noti_username").addClass('right_animated');
+
+						$(".noti_btn_icon").removeClass('hidden_animated');
+						$(".noti_btn_icon").addClass('visible_animated');
+					}
+					
+					resolve();
+				} 
 			});
-		});
+		}).catch(e => console.log(e));
 	} 
 
 	var updateUserInfo = function(isChecked){
@@ -152,7 +222,7 @@
 		};
 		
 		CommonUtil.api.ajaxPost("/api/user/updateUserInfoAjax", reqData, function(){
-			alert('실시간 알림 ON/OFF 기능은 브라우저 새로코침 이후에 적용됩니다.');
+			alert('실시간 알림 ON/OFF 기능은 브라우저 새로고침 이후에 적용됩니다.');
 		});
 	}
 
@@ -161,15 +231,16 @@
 			CommonUtil.api.ajaxPost("/api/noti/getNotiListAjax", {}, function(res){
 				var innerHTML = '';
 				if(res.data.length < 1){
-					innerHTML = '<div class="noti_el">알림이 없습니다.</div>';
+					innerHTML = '<li class="noti_el">알림이 없습니다.</li>';
 				}else{
-					res.data.forEach((e, idx) => { 
-						innerHTML += '<div class="noti_el" data-element=\'' + JSON.stringify(e) + '\'>';
+					res.data.forEach((e, idx) => {
+						innerHTML += '<li class="noti_el" name="noti_detail" data-element=\'' + JSON.stringify(e) + '\'>';
+						innerHTML += '<p class="m-w10"><i class="fa fa-circle fa-lg noti_dot"></i></p>';
 						if(StringUtil.isEquals('N', e.seen_yn)){
-							innerHTML += '<span class="noti_icon"><i class="fa fa-exclamation-circle" aria-hidden="true" style="padding: 0px 2px 0 2px;"></i> 신규</span>';
+							innerHTML += '<span class="noti_icon" style="margin: 0 10px 0 0"><i class="fa fa-exclamation-circle" aria-hidden="true" style="padding: 0px 2px 0 2px;"></i> 신규</span>';
 						}
 						innerHTML += '<p>'+e.noti_subject+'</p>';
-						innerHTML += '</div>';
+						innerHTML += '</li>';
 						if(idx < res.data.length - 1){
 							innerHTML += '<div class="noti_bar"></div>';
 						}
@@ -189,10 +260,23 @@
 		CommonUtil.api.ajaxPost("/api/noti/saveNotiItemAjax", reqData, null);
 	}
  
-	var openNotiDetailPopup = async function(thisObj, reqData){
+	var openNotiDetailPopup = function(thisObj, reqData){
 		saveNotiItem(thisObj, reqData);
-		CommonUtil.modal.modal_detail.init(reqData.noti_subject, reqData.noti_content);
+		CommonUtil.modal.modal_detail.init("#modal-textarea", reqData.noti_subject, reqData.noti_content);
 		CommonUtil.modal.modal_detail.open("#modal-textarea");
 	}
 
+	var openSendNotiPopup = function(){
+		CommonUtil.modal.modal_detail.init("#modal-sendNoti", "[관리자 메뉴] 알림 보내기", null);
+		CommonUtil.modal.modal_detail.open("#modal-sendNoti");
+	}
+
+	var toggleSide = function(){
+		if($('.header_slider').hasClass('hidden')){
+			$('.header_slider').removeClass('hidden');
+		}else{
+			$('.header_slider').addClass('hidden');
+		}
+	}
+ 
 </script>

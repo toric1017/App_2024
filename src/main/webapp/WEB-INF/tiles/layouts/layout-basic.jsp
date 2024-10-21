@@ -53,6 +53,23 @@
 			// 실시간 알림 소켓연결
 			if(StringUtil.isEquals("Y", CommonUtil.session.notiYn)){
 				CommonUtil.websocket.init();
+				CommonUtil.websocket.connectedList = [];
+				CommonUtil.websocket.cursorActiveList = [];
+
+				// 마우스 위치추적 및 실시간 저장을 위한 input tag 넘버링
+				$(".card .container input").addClass(i => {
+					return 'input_num_' + i; 
+				});
+
+				// 마우스 위치추적 및 실시간 저장을 위한 textarea tag 넘버링
+				$(".card .container textarea").addClass(i => {
+					return 'textarea_num_' + i; 
+				});
+
+				// 마우스 위치추적 및 실시간 저장을 위한 select tag 넘버링
+				$(".card .container select").addClass(i => {
+					return 'select_num_' + i; 
+				});
 			}
 		});
 	</script>

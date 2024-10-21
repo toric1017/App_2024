@@ -2,6 +2,9 @@
  * StringUtil.js
  */
 
+const LEAD_OFFSET = 0xd800 - (0x10000 >> 10);
+const SURROGATE_OFFSET = 0x10000 - (0xd800 << 10) - 0xdc00;
+
 var StringUtil = {
 	isEmpty : function(val){
 		// test results

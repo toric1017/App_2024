@@ -65,7 +65,7 @@
 			location.href = "/dashboard/index";
 		}else{
 			CommonUtil.api.ajaxPost("/api/login/loginAjax", data, function(){
-				location.href = "/eaiInterface/index";
+				location.href = "/eaiInterface/";
 			});
 		}
 	}

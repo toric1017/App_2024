@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="EaiInterfaceMappingMapper">
+
+	<select id="selectMappingMaster" parameterType="com.eai_work.eaiInterface.vo.MappingVO" resultType="Map">
+		SELECT A.seq
+			  ,A.use_yn
+			  ,A.del_yn
+			  ,A.reg_id
+			  ,A.reg_dtm
+			  ,A.upd_id
+			  ,A.upd_dtm
+			  ,A.if_id
+			  ,A.if_mapping_detail_seq
+			  ,A.source_system_name
+			  ,A.source_object_name
+			  ,A.source_adaptor
+			  ,A.source_method
+			  ,A.target_system_name
+			  ,A.target_object_name
+			  ,A.target_adaptor
+			  ,A.target_method
+		  FROM tb_interface_mapping_Master A
+		 WHERE A.seq = #{seq}
+	</select>
+	
+	<insert id="insertMappingMaster" parameterType="com.eai_work.eaiInterface.vo.MappingVO">
+		INSERT INTO tb_interface_mapping_Master
+		(
+			 seq
+            ,use_yn
+            ,del_yn
+            ,reg_id
+            ,reg_dtm
+            ,upd_id
+            ,upd_dtm
+            ,if_id
+            ,if_mapping_detail_seq
+            ,source_system_name
+            ,source_object_name
+            ,source_adaptor
+            ,source_method
+            ,target_system_name
+            ,target_object_name
+            ,target_adaptor
+            ,target_method
+		)
+		VALUES
+		(
+			 #{seq}
+			,#{use_yn}
+			,#{del_yn}
+			,#{reg_id}
+			,#{reg_dtm}
+			,#{upd_id}
+			,#{upd_dtm}
+			,#{if_id}
+			,#{if_mapping_detail_seq}
+			,#{source_system_name}
+			,#{source_object_name}
+			,#{source_adaptor}
+			,#{source_method}
+			,#{target_system_name}
+			,#{target_object_name}
+			,#{target_adaptor}
+			,#{target_method}
+		)
+	</insert>
+	
+	<update id="updateMappingMaster" parameterType="com.eai_work.eaiInterface.vo.MappingVO">
+		UPDATE tb_interface_mapping_Master
+		   SET use_yn                = #{use_yn}
+		      ,del_yn                = #{del_yn}
+		      ,upd_id                = #{upd_id}
+		      ,upd_dtm               = #{upd_dtm}
+		      ,if_id                 = #{if_id}
+		      ,if_mapping_detail_seq = #{if_mapping_detail_seq}
+		      ,source_system_name    = #{source_system_name}
+		      ,source_object_name    = #{source_object_name}
+		      ,source_adaptor        = #{source_adaptor}
+		      ,source_method         = #{source_method}
+		      ,target_system_name    = #{target_system_name}
+		      ,target_object_name    = #{target_object_name}
+		      ,target_adaptor        = #{target_adaptor}
+		      ,target_method         = #{target_method}
+		 WHERE seq = #{seq}
+	</update>
+
+	<select id="selectMappingDetail" parameterType="com.eai_work.eaiInterface.vo.MappingVO" resultType="Map">
+		SELECT A.seq
+			  ,A.use_yn
+			  ,A.del_yn
+			  ,A.reg_id
+			  ,A.reg_dtm
+			  ,A.upd_id
+			  ,A.upd_dtm
+			  ,A.if_id
+			  ,A.source_input_data
+			  ,A.source_mapping_data
+			  ,A.source_procedure_data
+			  ,A.source_output_data
+			  ,A.target_input_data
+			  ,A.target_mapping_data
+			  ,A.target_procedure_data
+			  ,A.target_output_data
+		  FROM tb_interface_mapping_detail A
+		 WHERE A.seq = #{seq}
+	</select>
+	
+	<insert id="insertMappingDetail" parameterType="com.eai_work.eaiInterface.vo.MappingVO">
+		INSERT INTO tb_interface_mapping_detail
+		(
+			 seq
+			,use_yn
+			,del_yn
+			,reg_id
+			,reg_dtm
+			,upd_id
+			,upd_dtm
+			,if_id
+			,source_input_data
+			,source_mapping_data
+			,source_procedure_data
+			,source_output_data
+			,target_input_data
+			,target_mapping_data
+			,target_procedure_data
+			,target_output_data
+		)
+		VALUES
+		(
+			 #{seq}
+			,#{use_yn}
+			,#{del_yn}
+			,#{reg_id}
+			,#{reg_dtm}
+			,#{upd_id}
+			,#{upd_dtm}
+			,#{if_id}
+			,#{source_input_data}
+			,#{source_mapping_data}
+			,#{source_procedure_data}
+			,#{source_output_data}
+			,#{target_input_data}
+			,#{target_mapping_data}
+			,#{target_procedure_data}
+			,#{target_output_data}
+		)
+	</insert>
+	
+	<update id="updateMappingDetail" parameterType="com.eai_work.eaiInterface.vo.MappingVO">
+		UPDATE tb_interface_mapping_detail
+		   SET use_yn                = #{use_yn}
+		      ,del_yn                = #{del_yn}
+		      ,upd_id                = #{upd_id}
+		      ,upd_dtm               = #{upd_dtm}
+		      ,if_id                 = #{if_id}
+		      ,source_input_data     = #{source_input_data}
+		      ,source_mapping_data   = #{source_mapping_data}
+		      ,source_procedure_data = #{source_procedure_data}
+		      ,source_output_data    = #{source_output_data}
+		      ,target_input_data     = #{target_input_data}
+		      ,target_mapping_data   = #{target_mapping_data}
+		      ,target_procedure_data = #{target_procedure_data}
+		      ,target_output_data    = #{target_output_data}
+		 WHERE seq = #{seq}
+	</update>
+	
+</mapper>
+
+

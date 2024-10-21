@@ -18,6 +18,8 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Component;
 
 import com.eai_work.common.config.WebsocketSessionConfig;
@@ -40,7 +42,14 @@ public class AppPushEndPoint extends HttpServlet{
 
     @OnMessage
     public void onMessage(String message) {
-        // logger.info("Message from the client: " + message);
+        try {
+            JSONParser parser = new JSONParser();
+            JSONObject jobj = (JSONObject) parser.parse(message);
+
+            sendAll(jobj.toJSONString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @OnClose

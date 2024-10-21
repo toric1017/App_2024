@@ -12,6 +12,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 }
 
 body {
+    font-size: 14px;
     line-height: 1;
     font-family: sans-serif;
 }
@@ -79,18 +80,13 @@ input, button, select, textarea {
     font: inherit;
 }
 
-/* 브라우저 기본 스크롤바 스타일 제거 */
-::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
 
 body {
     font-family: 'Arial', sans-serif;
 }
 
 
-.page__data-list table{width: 100%;border-collapse: collapse;background-color: white;border-radius: 8px;overflow: hidden;box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);}
+.page__data-list table{width: 100%;border-collapse: collapse;background-color: white;border-radius: 8px;box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);}
 .page__data-list th, .page__data-list td {padding:15px;text-align: left;}
 .page__data-list th {background-color:#343a40;color: white;font-weight: 600;text-transform: uppercase;font-size: 14px;}
 .page__data-list td {color: #555;font-size: 14px;}
@@ -98,6 +94,41 @@ body {
 .page__data-list tr:last-child {border-bottom: none;}
 .page__data-list tr:nth-child(even) {background-color: #f8f9fa;}
 .page__data-list tr:hover{background-color: #f1f3f5;}
+
+.page__data-list.mapping table{width: 100%;border-collapse: collapse;background-color: white;border-radius: 0px;box-shadow:none;}
+.page__data-list.mapping th, .page__data-list.mapping td {padding:8px 10px;}
+.page__data-list.mapping th{text-align:center;}
+.page__data-list th {background-color:#eee;color: #333;font-weight: 600;text-transform: uppercase;font-size: 14px;}
+.page__data-list td {color: #555;font-size: 14px;border-color:#666;}
+.page__data-list tr {border-bottom: 1px solid #e9ecef;transition: background-color 0.2s ease;}
+.page__data-list tr:last-child {border-bottom: none;}
+.page__data-list tr:nth-child(even) {background-color: #f8f9fa;}
+.page__data-list tr:hover{background-color: #f1f3f5;}
+
+.scroll-area{overflow-x: scroll;}
+.scroll-area .page__data-list{margin-top:-1px;}
+.scroll-area .page__data-list td{padding:5px 10px;font-size:12px;}
+.scroll-area .page__data-list tr:first-child th,
+.scroll-area .page__data-list tr:first-child td{border-top:0;}
+
+.page__data-wrap .half-area{display:flex;margin-top:8px;border:1px solid #666;}
+.page__data-wrap .half-area > .page__data-list{width:50%;margin-top:0;}
+.page__data-wrap .half-area > .page__data-list+.page__data-list{border-left:1px solid #666;}
+
+.page__data-wrap .half-area .page__data-list table tr th,
+.page__data-wrap .half-area .page__data-list table tr td{border-bottom:1px solid #666;} 
+.page__data-wrap .half-area .page__data-list table tr th+th{border-left:1px solid #666;}
+
+.page__data-wrap .half-area .page__data-list table tr td{border-right:1px solid #666;} 
+.page__data-wrap .half-area .page__data-list table tr td:last-child{border-right:0;}
+
+.page__data-wrap .half-area .page__data-list table tr td.btn__area{position:relative;padding-right:70px;padding-bottom:22px;}
+.page__data-wrap .btn__row-add{position:absolute;right:35px;bottom:5px;width:28px;height:28px;font-size:18px;text-indent:-9999px;border:1px solid #ddd;border-radius:4px;background:#fff;}
+.page__data-wrap .btn__row-del{position:absolute;right:5px;bottom:5px;width:28px;height:28px;border:1px solid #ddd;border-radius:4px;background:#fff;}
+.page__data-wrap .btn__row-add:before{content:'';position:absolute;top:50%;left:50%;width:1px;height:10px;background:#000;transform:translate(-50%,-50%);}
+.page__data-wrap .btn__row-add:after{content:'';position:absolute;top:50%;left:50%;width:10px;height:1px;background:#000;transform:translate(-50%,-50%);}
+.page__data-wrap .btn__row-del:before{content:'';position:absolute;top:50%;left:50%;width:10px;height:1px;background:#000;transform:translate(-50%,-50%);}
+
 
 .page__data-form h3{font-size:19px;color:#111;}
 .page__data-form table {width:100%;margin-top:8px;border-collapse: collapse;border-radius:4px;overflow: hidden;box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);overflow:hidden;}
@@ -135,6 +166,7 @@ header .header_inner-wrap .gnb__menu-wrap ul a.active{color:#426b1f;font-weight:
 .container{padding:50px 0;}
 .page__util-box{display:flex;width:100%;padding-bottom:10px;line-height:1.2;border-bottom:1px solid #111;justify-content:space-between;align-items:center;}
 .page__util-box h2{font-size:24px;color:#111;}
+.page__util-box h2 > span {display:inline-block;margin-left: 20px;font-size: 16px; font-weight: normal;}
 .page__util-box .search__item-wrap{}
 .page__data-wrap{margin-top:40px;}
 .page__data-util--box{display:flex;justify-content:space-between;align-items:center;}

@@ -104,6 +104,8 @@
 	</div>
 	
 </div>
+
+<%-- <div class="custom_cursor hidden" id="custom_cursor"></div> --%>
  
 <jsp:include page="../../view/common/modal-textarea.jsp" />
 <jsp:include page="../../view/common/modal-sendNoti.jsp" />
@@ -166,6 +168,75 @@
 
 		$("#sendNoti").on('click', function(){
 			openSendNotiPopup();
+		});
+
+		$(".card .container").on('mousedown', function(e) {
+			var isExecute = true;
+			var _target = $(e.target).attr('class');
+			// 이미 세션 사용자가 수정중인 항목은 수정불가
+			for(var i=0; i<CommonUtil.websocket.cursorActiveList.length; i++){
+				if(_target == CommonUtil.websocket.cursorActiveList[i].target){
+					e.preventDefault();
+					isExecute = false;
+					break;
+				}
+			}
+
+			if(isExecute){
+				var data = {
+					dataType: 'mousedown',
+					curUrl : currUrl,
+					userId: CommonUtil.session.userId,
+					userName: CommonUtil.session.userName, 
+					screenWidth: $(this).innerWidth(),
+					screenHeight : $(this).innerHeight(),
+					left: e.pageX - 0,
+					top: e.pageY - 50,
+					value : e.target.value,
+					target : _target
+				};
+
+				CommonUtil.websocket.send(JSON.stringify(data));
+			}
+		});
+
+		$(".card .container").on('keyup', function(e) {
+			var isExecute = true;
+			var _target = $(e.target).attr('class');
+			// 이미 세션 사용자가 수정중인 항목은 수정불가
+			for(var i=0; i<CommonUtil.websocket.cursorActiveList.length; i++){
+				if(_target == CommonUtil.websocket.cursorActiveList[i].target){
+					e.preventDefault();
+					isExecute = false;
+					break;
+				}
+			}
+
+			if(isExecute){
+				var data = {
+					dataType: 'keyup',
+					curUrl : currUrl,
+					userId: CommonUtil.session.userId,
+					userName: CommonUtil.session.userName,
+					target : $(e.target).attr('class'),
+					keyCode : e.keyCode,
+					value : e.target.value
+				};
+
+				CommonUtil.websocket.send(JSON.stringify(data));
+			}
+		});
+
+		$(".card .container input, .card .container textarea, .card .container select").blur(async function(e){
+			$(".card .container input").each(function(idx){
+				console.log($(this).attr('class') + ": " + $(this).val()); 
+			});
+			$(".card .container textarea").each(function(idx){
+				console.log($(this).attr('class') + ": " + $(this).val()); 
+			});
+			$(".card .container select").each(function(idx){
+				console.log($(this).attr('class') + ": " + $(this).val()); 
+			});
 		});
 
 		getUserInfo();

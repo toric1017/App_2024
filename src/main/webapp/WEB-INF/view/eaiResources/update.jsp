@@ -4,21 +4,13 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-	    $("#resourceList").bind("click", function(){
-            resourceList();
-        });
-
-	    $("#resourceCreate").bind("click", function(){
-            resourceCreate();
+	    $("#resourceUpdate").bind("click", function(){
+            resourceUpdate();
         });
 
     });
 
-    var resourceList = function(){
-	     location.href = "/eaiResources/index";
-    }
-
-	var resourceCreate = function(){
+	var resourceUpdate = function(){
 
 	    if( $("#managerCompany").val() == "" ){
 	        alert("소속은 필수 입력 입니다.");
@@ -59,13 +51,12 @@
             "resourceEtcKind" : $("#resourceEtcKind").val(),
             "resourceEtcDev" : $("#resourceEtcDev").val(),
             "resourceEtcPrd" : $("#resourceEtcPrd").val(),
-            "resourceDetail" : $("#resourceDetail").val(),
-            "useYn" : "Y"
+            "resourceDetail" : $("#resourceDetail").val()
     	};
                  // Ajax 호출
                  $.ajax({
-                     url: "/eaiResources/api/create",
-                     type: "POST",
+                     url: "/eaiResources/api/update/" + ${eaiResources.resourceSeq},
+                     type: "PUT",
                      data: JSON.stringify(data),
                      headers : {
 							"Content-Type" : "application/json; charset=utf-8",
@@ -78,12 +69,12 @@
                              console.log("Success callback called", response);
                              location.href = "/eaiResources/detail/" + response.data;
                          } else {
-                             alert("등록 중 오류가 발생했습니다.");
+                             alert("수정 중 오류가 발생했습니다.");
                          }
                      },
                      error: function(xhr, status, error) {
                          console.error("Ajax 오류: ", xhr.responseText);
-                         alert("등록 중 오류가 발생했습니다.");
+                         alert("수정 중 오류가 발생했습니다.");
                      }
                  });
     }
@@ -98,8 +89,8 @@
             </div>
             <div class="page__data-wrap">
                 <div class="page__detail-util--box">
-                    <a href="#" class="btn__white" id="resourceCreate">Save</a>
-                    <a href="#" class="btn__black" onclick="resourceList()">list</a>>Cancel</a>
+                    <a href="#" class="btn__white" id="resourceUpdate">Save</a>
+                    <a href="#" class="btn__black" onclick="history.back()">Cancel</a>
                 </div>
                 <div class="page__data-form">
                     <h3>1. EAI 대상 시스템 정보 - 요청자 입력사항</h3>
@@ -117,61 +108,60 @@
                         </tr>
                         <tr>
                             <th>소속</th>
-                            <td><input type="text" id="managerCompany" value=""></td>
+                            <td><input type="text" id="managerCompany" value="${eaiResources.managerCompany}"></td>
                             <th>부서명</th>
-                            <td colspan="2"><input type="text" id="managerDept" value=""></td>
+                            <td colspan="2"><input type="text" id="managerDept" value="${eaiResources.managerDept}"></td>
                         </tr>
                         <tr>
                             <th>담당자성명</th>
-                            <td><input type="text" id="managerName" value=""></td>
+                            <td><input type="text" id="managerName" value="${eaiResources.managerName}"></td>
                             <th>전화번호</th>
-                            <td colspan="2"><input type="text" id="managerPhone" value=""></td>
+                            <td colspan="2"><input type="text" id="managerPhone" value="${eaiResources.managerPhone}"></td>
                         </tr>
                         <tr>
                             <th rowspan="9">시스템명</th>
-                            <td rowspan="9"><input type="text" id="resourceName" value=""></td>
+                            <td rowspan="9"><input type="text" id="resourceName" value="${eaiResources.resourceName}"></td>
                             <th rowspan="3">WEB/WAS</th>
                             <th>종류</th>
-                            <td><input type="text" id="resourceWasKind" value=""></td>
+                            <td><input type="text" id="resourceWasKind" value="${eaiResources.resourceWasKind}"></td>
                         </tr>
                         <tr>
                             <th>개발</th>
-                            <td><input type="text" id="resourceWasDev" value="" ></td>
+                            <td><input type="text" id="resourceWasDev" value="${eaiResources.resourceWasDev}" ></td>
                         </tr>
                         <tr>
                             <th>운영</th>
-                            <td><input type="text" id="resourceWasPrd" value=""></td>
+                            <td><input type="text" id="resourceWasPrd" value="${eaiResources.resourceWasPrd}"></td>
                         </tr>
                         <tr>
                             <th rowspan="3">DB</th>
                             <th>종류</th>
-                            <td><input type="text" id="resourceDbKind" value=""></td>
+                            <td><input type="text" id="resourceDbKind" value="${eaiResources.resourceDbKind}"></td>
                         </tr>
                         <tr>
                             <th>개발</th>
-                            <td><input type="text" id="resourceDbDev" value=""></td>
+                            <td><input type="text" id="resourceDbDev" value="${eaiResources.resourceDbDev}"></td>
                         </tr>
                         <tr>
                             <th>운영</th>
-                            <td><input type="text" id="resourceDbPrd" value=""></td>
+                            <td><input type="text" id="resourceDbPrd" value="${eaiResources.resourceDbPrd}"></td>
                         </tr>
                         <tr>
                             <th rowspan="3">기타</th>
                             <th>종류</th>
-                            <td><input type="text" id="resourceEtcKind" value=""></td>
+                            <td><input type="text" id="resourceEtcKind" value="${eaiResources.resourceEtcKind}"></td>
                         </tr>
                         <tr>
                             <th>개발</th>
-                            <td><input type="text" id="resourceEtcDev" value=""></td>
+                            <td><input type="text" id="resourceEtcDev" value="${eaiResources.resourceEtcDev}"></td>
                         </tr>
                         <tr>
                             <th>운영</th>
-                            <td><input type="text" id="resourceEtcPrd" value=""></td>
+                            <td><input type="text" id="resourceEtcPrd" value="${eaiResources.resourceEtcPrd}"></td>
                         </tr>
                         <tr>
                              <th>시스템설명</th>
-                             <td colspan="4"><input type="text" id="resourceDetail" value=""></td>
-
+                             <td colspan="4"><input type="text" id="resourceDetail" value="${eaiResources.resourceDetail}"></td>
                         </tr>
                     </table>
                 </div>

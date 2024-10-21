@@ -203,6 +203,10 @@ textarea:focus, input:focus{
     /* text-shadow: 1px 1px #20212447; */
 }
 
+.custom_cursor{
+  position: absolute;
+}
+
 .toggle_switch{
 	position: relative;
 	display: inline-block;

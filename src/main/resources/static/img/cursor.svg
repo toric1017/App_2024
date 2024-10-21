@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<svg id="cursor-svg" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewbox= "0 0 50 50" style="position: absolute; pointer-events: none;">
+    <defs>
+        <filter id="shadow">
+            <feDropShadow dx="0.4" dy="0.4" flood-color="rgba(32,33,36,0.28)" />
+        </filter> 
+    </defs>  
+    <!-- 바깥 원 -->
+    <circle id="cursor-circle-svg" cx="25" cy="25" r="20" stroke="#426b1f" stroke-width="4" fill="none" />
+    <!-- 사용자 이니셜 -->
+    <text id="cursor-id-svg" x="50%" y="50%" text-anchor="middle" stroke="#426b1f" fill="#426b1f" stroke-width="1px" dy=".3em" font-size="18px" font-family="Arial" >J</text>
+    <!-- 포인터 좌하단-->
+    <polygon id="cursor-triangle-svg" points="3,30 0,50 20,47" fill="#426b1f" style="filter:url(#shadow);"></polygon>
+    <!-- 포인터 우하단-->
+    <!-- <polygon id="cursor-triangle-svg" points="30,47 50,50 47,30" fill="#426b1f" style="filter:url(#shadow);"></polygon> -->
+</svg>

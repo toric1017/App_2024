@@ -1,6 +1,7 @@
 package com.eai_work.eaiInterface.controller;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,10 +10,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.eai_work.common.util.JsonUtil;
 import com.eai_work.common.util.ResponseUtil;
 import com.eai_work.common.vo.ResponseVO;
 import com.eai_work.eaiInterface.service.EaiInterfaceMappingService;
@@ -28,6 +31,11 @@ public class EaiInterfaceMappingController {
 	
 	@Autowired
 	private EaiInterfaceMappingService eaiInterfaceMappingService;
+	
+	@GetMapping({"/", "/mapping"})
+	public String mapping(Map<String, Object>reqMap)throws Exception{
+		return "/eaiInterface/mapping";
+	}
 	
 	/**
 	 * Mapping 조회
@@ -68,7 +76,7 @@ public class EaiInterfaceMappingController {
 		
 		try {
 			//Mapping master 등록
-			eaiInterfaceMappingService.insertMappingMaster(request, vo);
+			//eaiInterfaceMappingService.insertMappingMaster(request, vo);
 			//Mapping Detail 등록
 			eaiInterfaceMappingService.insertMappingDetail(request, vo);
 		}catch(Exception e) {

@@ -1,5 +1,7 @@
 package com.eai_work.common.util;
 
+import org.springframework.lang.Nullable;
+
 public class StringUtil {
 
 	public static String truncate(String text, int maxlength) {
@@ -21,4 +23,29 @@ public class StringUtil {
 		return text.substring(startStridx, endStridx);
 	}
 	
+	public static String stringNvl(Object obj, String defaultStr){
+		String result = defaultStr;
+		if(obj != null && !"".equals(obj)){
+			result = String.valueOf(obj);
+		}
+		return result;
+	}
+	
+	public static boolean isEmpty(@Nullable Object str) {
+		return (str == null || "".equals(str));
+	}
+	
+	public static boolean hasText(@Nullable String str) {
+		return (str != null && !str.isEmpty() && containsText(str));
+	}
+	
+	private static boolean containsText(CharSequence str) {
+		int strLen = str.length();
+		for (int i = 0; i < strLen; i++) {
+			if (!Character.isWhitespace(str.charAt(i))) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

@@ -21,12 +21,12 @@
 			  ,A.target_object_name
 			  ,A.target_adaptor
 			  ,A.target_method
-		  FROM tb_interface_mapping_Master A
+		  FROM tb_interface_mapping_master A
 		 WHERE A.seq = #{seq}
 	</select>
 	
 	<insert id="insertMappingMaster" parameterType="com.eai_work.eaiInterface.vo.MappingVO">
-		INSERT INTO tb_interface_mapping_Master
+		INSERT INTO tb_interface_mapping_master
 		(
 			 seq
             ,use_yn
@@ -48,7 +48,7 @@
 		)
 		VALUES
 		(
-			 #{seq}
+			 nextval('tb_interface_mapping_master_seq')
 			,#{use_yn}
 			,#{del_yn}
 			,#{reg_id}
@@ -69,7 +69,7 @@
 	</insert>
 	
 	<update id="updateMappingMaster" parameterType="com.eai_work.eaiInterface.vo.MappingVO">
-		UPDATE tb_interface_mapping_Master
+		UPDATE tb_interface_mapping_master
 		   SET use_yn                = #{use_yn}
 		      ,del_yn                = #{del_yn}
 		      ,upd_id                = #{upd_id}
@@ -130,7 +130,7 @@
 		)
 		VALUES
 		(
-			 #{seq}
+			 nextval('tb_interface_mapping_detail_seq')
 			,#{use_yn}
 			,#{del_yn}
 			,#{reg_id}

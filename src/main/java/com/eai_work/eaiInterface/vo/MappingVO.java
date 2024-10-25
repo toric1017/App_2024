@@ -3,7 +3,7 @@ package com.eai_work.eaiInterface.vo;
 public class MappingVO {
 
 	/* SEQ */
-	private String seq;
+	private int seq;
 	/* 사용여부 */
 	private String use_yn;
 	/* 삭제여부 */
@@ -21,15 +21,15 @@ public class MappingVO {
 	/* 인터페이스명 */
 	private String if_name;
 	/* 인터페이스버전 */
-	private String if_version;
+	private double if_version;
 	/* 인터페이스 상세 SEQ */
-	private String if_detail_seq;
+	private int if_detail_seq;
 	/* 인터페이스 시스템 SEQ */
-	private String if_system_seq;
+	private int if_system_seq;
 	/* 인터페이스 Mapping SEQ */
-	private String if_mapping_seq;
+	private int if_mapping_seq;
 	/* 인터페이스 Mapping 상세 SEQ */
-	private String if_mapping_detail_seq;
+	private int if_mapping_detail_seq;
 	/* Source System명 */
 	private String source_system_name;
 	/* Source Object명 */
@@ -63,10 +63,10 @@ public class MappingVO {
 	/* Target Output 데이터 */
 	private String target_output_data;
 	
-	public String getSeq() {
+	public int getSeq() {
 		return seq;
 	}
-	public void setSeq(String seq) {
+	public void setSeq(int seq) {
 		this.seq = seq;
 	}
 	public String getUse_yn() {
@@ -117,34 +117,34 @@ public class MappingVO {
 	public void setIf_name(String if_name) {
 		this.if_name = if_name;
 	}
-	public String getIf_version() {
+	public double getIf_version() {
 		return if_version;
 	}
-	public void setIf_version(String if_version) {
+	public void setIf_version(double if_version) {
 		this.if_version = if_version;
 	}
-	public String getIf_detail_seq() {
+	public int getIf_detail_seq() {
 		return if_detail_seq;
 	}
-	public void setIf_detail_seq(String if_detail_seq) {
+	public void setIf_detail_seq(int if_detail_seq) {
 		this.if_detail_seq = if_detail_seq;
 	}
-	public String getIf_system_seq() {
+	public int getIf_system_seq() {
 		return if_system_seq;
 	}
-	public void setIf_system_seq(String if_system_seq) {
+	public void setIf_system_seq(int if_system_seq) {
 		this.if_system_seq = if_system_seq;
 	}
-	public String getIf_mapping_seq() {
+	public int getIf_mapping_seq() {
 		return if_mapping_seq;
 	}
-	public void setIf_mapping_seq(String if_mapping_seq) {
+	public void setIf_mapping_seq(int if_mapping_seq) {
 		this.if_mapping_seq = if_mapping_seq;
 	}
-	public String getIf_mapping_detail_seq() {
+	public int getIf_mapping_detail_seq() {
 		return if_mapping_detail_seq;
 	}
-	public void setIf_mapping_detail_seq(String if_mapping_detail_seq) {
+	public void setIf_mapping_detail_seq(int if_mapping_detail_seq) {
 		this.if_mapping_detail_seq = if_mapping_detail_seq;
 	}
 	public String getSource_system_name() {

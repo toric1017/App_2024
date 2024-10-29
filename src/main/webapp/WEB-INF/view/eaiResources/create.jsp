@@ -169,7 +169,7 @@
                             <td><input type="text" id="resourceEtcPrd" value=""></td>
                         </tr>
                         <tr>
-                             <th>시스템설명</th>
+                             <th>시스템 설명</th>
                              <td colspan="4"><input type="text" id="resourceDetail" value=""></td>
 
                         </tr>

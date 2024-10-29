@@ -19,6 +19,7 @@
                     <span class="search__item-date important">
                         <label for="inpPeriod">기간 날짜</label>
                         <input type="date" id="inpPeriod" placeholder="날짜를 입력해주세요">
+                        <input type="date" id="inpPeriod" placeholder="날짜를 입력해주세요">
                     </span>
                     <span class="search__item-text">
                         <input type="text" placeholder="검색어를 입력해주세요">
@@ -34,7 +35,7 @@
                     <table>
                         <colgroup>
                             <col style="width:50px;">
-                            <col style="width:150px;">
+                            <col style="width:200px;">
                             <col style="width:200px;">
                             <col style="width:200px;">
                             <col>

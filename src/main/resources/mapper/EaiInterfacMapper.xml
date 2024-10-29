@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="EaiInterfaceMapper">
+
+	<update id="updateMaster" parameterType="com.eai_work.eaiInterface.vo.MappingEV">
+		UPDATE tb_interface_view
+		   SET 
+		    eai_nm=#{eai_nm}, 
+			eai_div_cd=#{eai_div_cd}, 
+			eai_desc=#{eai_desc}, 
+			req_adaptor=#{req_adaptor}, 
+			req_if_way_cd=#{req_if_way_cd}, 
+			req_rfc_id=#{req_rfc_id}, 
+			req_rfc_type_cd=#{req_rfc_type_cd}, 
+			req_dev_db_user_id=#{req_dev_db_user_id}, 
+			req_dev_db_pass=#{req_dev_db_pass}, 
+			req_real_db_user_id=#{req_real_db_user_id}, 
+			req_real_db_pass=#{req_real_db_pass}, 
+			req_api_chl_nm=#{req_api_chl_nm}, 
+			req_api_add=#{req_api_add}, 
+			req_operation=#{req_operation}, 
+			res_adaptor=#{res_adaptor}, 
+			res_if_way_cd=#{res_if_way_cd}, 
+			res_rfc_id=#{res_rfc_id}, 
+			res_rfc_type_cd=#{res_rfc_type_cd}, 
+			res_dev_db_user_id=#{res_dev_db_user_id}, 
+			res_dev_db_pass=#{res_dev_db_pass}, 
+			res_real_db_user_id=#{res_real_db_user_id}, 
+			res_real_db_pass=#{res_real_db_pass}, 
+			res_api_chl_nm=#{res_api_chl_nm}, 
+			res_api_add=#{res_api_add}, 
+			res_operation=#{res_operation}, 
+			eai_if_real_time_yn=#{eai_if_real_time_yn}, 
+			eai_sync_yn=#{eai_sync_yn}, 
+			eai_cycle=#{eai_cycle}, 
+			eai_occurs_cnt=#{eai_occurs_cnt}, 
+			eai_event_way=#{eai_event_way}, 
+			procedure_call_yn=#{procedure_call_yn}, 
+			use_yn=#{use_yn}, 
+			updr_id=#{updr_id}, 
+			upd_dtm=now()
+			WHERE eai_seq = #{eai_seq}
+	</update>
+
+	<update id="updateDetail" parameterType="com.eai_work.eaiInterface.vo.MappingEV">
+		UPDATE tb_interface_view_detail
+		   SET 
+		    req_res_div_cd=#{req_res_div_cd}, 
+			db_way_div_cd=#{db_way_div_cd}, 
+			rfc_db_user_id=#{rfc_db_user_id}, 
+			rfc_db_user_pass=#{rfc_db_user_pass},
+			api_chl_nm=#{api_chl_nm}, 
+			req_api_add=#{req_api_add},
+			req_operation=#{req_operation},
+			regr_id=#{regr_id},
+			updr_id=#{updr_id}, 
+			upd_dtm=now()
+			WHERE eai_seq = #{eai_seq}
+	</update>
+
+	<delete id="deleteMaster" parameterType="com.eai_work.eaiInterface.vo.MappingEV">
+		DELETE FROM tb_interface_view
+		WHERE eai_seq = #{eai_seq}
+	</delete>
+
+	<select id="selectMaster" parameterType="com.eai_work.eaiInterface.vo.MappingEV" resultType="Map">
+		SELECT 
+		a.eai_seq, 
+		a.eai_id, 
+		a.eai_nm, 
+		a.eai_div_cd, 
+		a.eai_desc, 
+		a.req_resources_seq, 
+		a.res_resources_seq, 
+		a.req_adaptor, 
+		a.req_if_way_cd, 
+		a.req_rfc_id, 
+		a.req_rfc_type_cd, 
+		a.req_dev_db_user_id, 
+		a.req_dev_db_pass, 
+		a.req_real_db_user_id, 
+		a.req_real_db_pass, 
+		a.req_api_chl_nm, 
+		a.req_api_add, 
+		a.req_operation, 
+		a.res_adaptor, 
+		a.res_if_way_cd, 
+		a.res_rfc_id, 
+		a.res_rfc_type_cd, 
+		a.res_dev_db_user_id, 
+		a.res_dev_db_pass, 
+		a.res_real_db_user_id, 
+		a.res_real_db_pass, 
+		a.res_api_chl_nm, 
+		a.res_api_add, 
+		a.res_operation, 
+		a.eai_if_real_time_yn, 
+		a.eai_sync_yn, 
+		a.eai_cycle, 
+		a.eai_occurs_cnt, 
+		a.eai_event_way, 
+		a.procedure_call_yn, 
+		a.use_yn, 
+		a.regr_id, 
+		a.reg_dtm, 
+		a.updr_id, 
+		a.upd_dtm,
+		req.resource_seq as req_resource_seq ,
+		req.manager_company as req_manager_company  ,
+		req.manager_dept as req_manager_dept ,
+		req.manager_name as req_manager_name,
+		req.manager_phone as req_manager_phone,
+		req.resource_name as req_resource_name  ,
+		req.resource_was_kind as req_resource_was_kind ,
+		req.resource_was_dev as req_resource_was_dev ,
+		req.resource_was_prd as req_resource_was_prd ,
+		req.resource_db_kind as req_resource_db_kind ,
+		req.resource_db_dev as req_resource_db_dev ,
+		req.resource_db_prd as req_resource_db_prd ,
+		req.resource_etc_kind as req_resource_etc_kind ,
+		req.resource_etc_dev as req_resource_etc_dev ,
+		req.resource_etc_prd as req_resource_etc_prd ,
+		req.resource_detail as req_resource_detail ,
+		req.use_yn as req_use_yn ,
+		req.reg_id as req_reg_id ,
+		req.reg_dtm as req_reg_dtm ,
+		req.upd_id as req_upd_id ,
+		req.upd_dtm as req_upd_dtm,
+		res.resource_seq as res_resource_seq ,
+		res.manager_company as res_manager_company  ,
+		res.manager_dept as res_manager_dept ,
+		res.manager_name as res_manager_name,
+		res.manager_phone as res_manager_phone,
+		res.resource_name as res_resource_name  ,
+		res.resource_was_kind as res_resource_was_kind ,
+		res.resource_was_dev as res_resource_was_dev ,
+		res.resource_was_prd as res_resource_was_prd ,
+		res.resource_db_kind as res_resource_db_kind ,
+		res.resource_db_dev as res_resource_db_dev ,
+		res.resource_db_prd as res_resource_db_prd ,
+		res.resource_etc_kind as res_resource_etc_kind ,
+		res.resource_etc_dev as res_resource_etc_dev ,
+		res.resource_etc_prd as res_resource_etc_prd ,
+		res.resource_detail as res_resource_detail ,
+		res.use_yn as res_use_yn ,
+		res.reg_id as res_reg_id ,
+		res.reg_dtm as res_reg_dtm ,
+		res.upd_id as res_upd_id ,
+		res.upd_dtm as res_upd_dtm
+		FROM 
+			tb_interface_view a
+		LEFT JOIN 
+			tb_resource req ON req.resource_seq = a.req_resources_seq
+		LEFT JOIN 
+			tb_resource res ON res.resource_seq = a.res_resources_seq
+		WHERE a.eai_seq = #{eai_seq}
+	</select>
+	
+</mapper>
+
+

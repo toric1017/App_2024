@@ -58,7 +58,7 @@
                             <th>소속</th>
                             <th>부서명</th>
                             <th>담당자</th>
-                            <th>전화번호</th>
+                            <th>시스템 설명</th>
                         </tr>
                         <c:forEach items="${eaiResources.content}" var="resource" varStatus="status">
                          <tr onclick="goToDetailPage(${resource.resourceSeq})" style="cursor: pointer;" >
@@ -67,7 +67,7 @@
                              <td>${resource.managerCompany}</td>
                              <td>${resource.managerDept}</td>
                              <td>${resource.managerName}</td>
-                             <td>${resource.managerPhone}</td>
+                             <td>${resource.resourceDetail}</td>
                         </tr>
                         </c:forEach>
                     </table>

@@ -33,7 +33,7 @@
                     <table>
                         <colgroup>
                             <col style="width:50px;">
-                            <col style="width:150px;">
+                            <col style="width:200px;">
                             <col style="width:200px;">
                             <col style="width:200px;">
                             <col>
@@ -41,9 +41,9 @@
                         <tr>
                             <th>No.</th>
                             <th>ID</th>
-                            <th>Request_System</th>
-                            <th>Response_Code</th>
-                            <th>Response_Message</th>
+                            <th>항목명</th>
+                            <th>업무분류</th>
+                            <th>개요</th>
                         </tr>
                         <tr>
                             <td>1</td>

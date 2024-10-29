@@ -127,7 +127,7 @@
                             <td>${eaiResources.resourceEtcPrd}</td>
                         </tr>
                         <tr>
-                            <th>시스템설명</th>
+                            <th>시스템 설명</th>
                             <td colspan="4">${eaiResources.resourceDetail}</td>
 
                         </tr>

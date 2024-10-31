@@ -6,6 +6,19 @@
 	$(document).ready(function(){
 		fn_init();
 	})
+
+    var selectReqBoxChange = function(value) {
+        $("#reqResourcesSeq").val(value)
+    }  
+    
+    var selectReqBoxChange1 = function(value) {
+        $("#reqResourcesSeq1").val(value)
+    }
+
+
+    
+
+    
 	
 	function fn_init(){
         $("#eaiDivCdSel").val($("#eaiDivCd").val()).prop("selected", true);
@@ -16,6 +29,17 @@
 
         $("#reqResourcesSeqSel").val($("#reqResourcesSeq").val()).prop("selected", true);
         $("#reqResourcesSeq1Sel").val($("#reqResourcesSeq1").val()).prop("selected", true);
+
+        var resourcesSel = $("#reqResourcesSeqSel").val();
+        var resourcesSel1 = $("#reqResourcesSeq1Sel").val();
+
+        if(resourcesSel == null) {
+            $("#reqResourcesSeqSel").val("").prop("selected", true);
+        }
+
+        if(resourcesSel1 == null) {
+            $("#reqResourcesSeq1Sel").val("").prop("selected", true);
+        }
         
 	}   
 
@@ -55,7 +79,9 @@
         "procedure_call_yn" : $("#procedureCallYnSel").val()  ,
         "use_yn" : $("#useYnSel").val()  ,
         "updr_id" : $("#updrId").val()  ,
-        "upd_dtm" : $("#updDtm").val() 
+        "upd_dtm" : $("#updDtm").val() ,
+        "req_resources_seq" : $("#reqResourcesSeq").val(),
+        "res_resources_seq" : $("#reqResourcesSeq1").val()
 
     };
      // Ajax 호출
@@ -73,7 +99,10 @@
                  // 등록 성공 시, 반환된 resourceSeq 값으로 상세 페이지로 리다이렉트
                  console.log("Success callback called", response);
                  alert(response.resMeg);
-                 location.href = "/eaiInterface/";
+                //  location.href = "/eaiInterface/";
+                var eaiSeq = $("#eaiSeq").val();
+                location.href = "/eaiInterface/modifyView?eai_seq=" + eaiSeq;
+                 
              } else {
                  alert("수정 중 오류가 발생했습니다.");
              }
@@ -133,6 +162,7 @@
                     <!-- <a href="#" class="btn__black" onclick="btnDelte()">Delete</a> -->
                     <a href="/eaiInterface/modifyView?eai_seq=${eaiInterface.eai_seq}" class="btn__black">Cancel</a>
                     <a href="#" class="btn__white" onclick="btnUpdate()">Save</a>
+                    
                 </div>
                 <div class="page__data-form">
                     <h3>1. 인터페이스 개요 - 요청자 입력사항</h3>
@@ -196,7 +226,7 @@
                             <th>시스템명</th>
                             <td>
                             <input type="hidden" id="reqResourcesSeq1" value="${eaiInterface.res_resource_seq}">
-                                <select  onchange="selectReqBoxChange(this.value)" id="reqResourcesSeq1Sel">
+                                <select  onchange="selectReqBoxChange1(this.value)" id="reqResourcesSeq1Sel">
                                     <option value="">선택</option>
                                     <c:forEach items="${eaiResources.content}" var="resource" varStatus="status">
                                         <option value="${resource.resourceSeq}">${resource.resourceName}</option>

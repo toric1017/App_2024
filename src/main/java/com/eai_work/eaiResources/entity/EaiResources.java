@@ -1,5 +1,10 @@
 package com.eai_work.eaiResources.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import javax.servlet.http.HttpSession;
+import com.eai_work.common.util.SessionEnum;
 import lombok.*;
 
 import javax.persistence.*;
@@ -83,6 +88,24 @@ public class EaiResources {
     protected void onCreate() {
         regDtm = LocalDateTime.now();
         updDtm = LocalDateTime.now();
+        // 세션에서 사용자 ID를 가져와 설정
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session = attr.getRequest().getSession(false); // 세션이 없으면 null 반환
+        if (session != null) {
+            regId = (String) session.getAttribute(SessionEnum.SESSION_USER_ID.getSessionId());
+            updId = (String) session.getAttribute(SessionEnum.SESSION_USER_ID.getSessionId());
+        }
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updDtm = LocalDateTime.now();
+        // 세션에서 사용자 ID를 가져와 설정
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session = attr.getRequest().getSession(false); // 세션이 없으면 null 반환
+        if (session != null) {
+            updId = (String) session.getAttribute(SessionEnum.SESSION_USER_ID.getSessionId());
+        }
     }
 
 

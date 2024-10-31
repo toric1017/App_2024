@@ -424,8 +424,8 @@
                                     <tr id="s_input_tr">
                                         <td id="s_input_td" rowspan="2" class="btn__area">
                                             INPUT_DATA <strong>&lt;/EAI_REQUEST&gt;</strong>
-                                            <button type="button" class="btn__row-add" onclick="addInputData('input')">+</button>
-                                            <button type="button" class="btn__row-del" onclick="delInputData('input')">-</button>
+                                            <button type="button" class="btn__row-add" onclick="addInputData('input')"></button>
+                                            <button type="button" class="btn__row-del" onclick="delInputData('input')"></button>
                                         </td>
                                         <td id="s_input_td_1"><input id="s_input_seq_1" type="text" style="width:100%; border: 0;" value=1></td>
                                         <td><input id="s_input_field_1" type="text" style="width:100%; border: 0;"></td>
@@ -449,8 +449,8 @@
                                     <tr id="s_req_tr">
                                         <td id="s_req_td" rowspan="2" class="btn__area">
                                             REQ_DATA                                            
-                                            <button type="button" class="btn__row-add" onclick="addInputData('req')">+</button>
-                                            <button type="button" class="btn__row-del" onclick="delInputData('req')">-</button>
+                                            <button type="button" class="btn__row-add" onclick="addInputData('req')"></button>
+                                            <button type="button" class="btn__row-del" onclick="delInputData('req')"></button>
                                         </td>
                                         <td id="s_req_td_1"><input id="s_req_seq_1" type="text" style="width:100%; border: 0;" value=1></td>
                                         <td><input id="s_req_field_1" type="text" style="width:100%; border: 0;"></td>
@@ -640,8 +640,8 @@
                                     <tr id="t_input_tr">
                                         <td id="t_input_td" rowspan="2" class="btn__area">
 											INPUT_DATA <strong>&lt;/EAI_REQUEST&gt;</strong>
-                                        	<button type="button" class="btn__row-add" onclick="addInputData('input')">+</button>
-                                            <button type="button" class="btn__row-del" onclick="delInputData('input')">-</button>                               
+                                        	<button type="button" class="btn__row-add" onclick="addInputData('input')"></button>
+                                            <button type="button" class="btn__row-del" onclick="delInputData('input')"></button>                               
                                         </td>
                                         <td id="t_input_td_1"><input id="t_input_seq_1" type="text" style="width:100%; border: 0;" value=1></td>
                                         <td><input id="t_input_field_1" type="text" style="width:100%; border: 0;"></td>
@@ -665,8 +665,8 @@
                                     <tr id="t_req_tr">
                                         <td id="t_req_td" rowspan="2" class="btn__area">
                                             REQ_DATA                                            
-                                            <button type="button" class="btn__row-add" onclick="addInputData('req')">+</button>
-                                            <button type="button" class="btn__row-del" onclick="delInputData('req')">-</button>
+                                            <button type="button" class="btn__row-add" onclick="addInputData('req')"></button>
+                                            <button type="button" class="btn__row-del" onclick="delInputData('req')"></button>
                                         </td>
                                         <td id="t_req_td_1"><input id="t_req_seq_1" type="text" style="width:100%; border: 0;" value=1></td>
                                         <td><input id="t_req_field_1" type="text" style="width:100%; border: 0;"></td>

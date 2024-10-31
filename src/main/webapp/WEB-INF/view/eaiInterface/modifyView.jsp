@@ -167,7 +167,8 @@
                         </tr>
                         <tr>
                             <th>개요</th>
-                            <td>${eaiInterface.eai_desc}</td>
+                            <!-- <td>${eaiInterface.eai_desc}</td> -->
+                            <td><textarea cols="50" rows="8" readonly="readonly" style="border: 0px;">${eaiInterface.eai_desc}</textarea></td>
                         </tr>
                     </table>
                 </div>
@@ -175,21 +176,123 @@
                     <h3>2. EAI대상 시스템 정보</h3>
                     <table>
                         <colgroup>
-                            <col style="width:150px;">
+                            <col style="width:100px;">
                             <col>
-                            <col style="width:150px;">
+                            <col style="width:100px;">
+                            <col style="width:100px;">
+                            <col>
+                            <col style="width: 100px;">
+                            <col>
+                            <col style="width:100px;">
+                            <col style="width:100px;">
                             <col>
                         </colgroup>
+                         <tr>
+                            <th colspan="5" class="th__title">요청시스템</th>
+                            <th colspan="5" class="th__title">응답시스템</th>
+                        </tr>
+                        <!--<tr>
+                            <th colspan="1">시스템명</th>
+                            <td colspan="4">${eaiInterface.req_resource_name}</td>
+                            <th colspan="1" >시스템명</th>
+                            <td colspan="4">${eaiInterface.res_resource_name}</td>
+                        </tr> -->
+                        <!-- 1031 -->
+                        <!-- <tr>
+                            <th colspan="5" class="th__title">시스템</th>
+                            <th colspan="5" class="th__title">시스템</th>
+                        </tr> -->
                         <tr>
-                            <th colspan="2" class="th__title">요청시스템</th>
-                            <th colspan="2" class="th__title">응답시스템</th>
+                            <th>소속</th>
+                            <td>${eaiInterface.req_manager_company}</td>
+                            <th>부서명</th>
+                            <td colspan="2">${eaiInterface.req_manager_dept}</td>
+                            <th>소속</th>
+                            <td>${eaiInterface.res_manager_company}</td>
+                            <th>부서명</th>
+                            <td colspan="2">${eaiInterface.res_manager_dept}</td>
                         </tr>
                         <tr>
-                            <th>시스템명</th>
-                            <td>${eaiInterface.req_resource_name}</td>
-                            <th>시스템명</th>
-                            <td>${eaiInterface.res_resource_name}</td>
+                            <th>담당자성명</th>
+                            <td>${eaiInterface.req_manager_name}</td>
+                            <th>전화번호</th>
+                            <td colspan="2">${eaiInterface.req_manager_phone}</td>
+                            <th>담당자성명</th>
+                            <td>${eaiInterface.res_manager_name}</td>
+                            <th>전화번호</th>
+                            <td colspan="2">${eaiInterface.res_manager_phone}</td>
                         </tr>
+                        <tr>
+                            <th rowspan="9">시스템명</th>
+                            <td rowspan="9">${eaiInterface.req_resource_name}</td>
+                            <th rowspan="3">WEB/WAS</th>
+                            <th>종류</th>
+                            <td>${eaiInterface.req_resource_was_kind}</td>
+                            <th rowspan="9">시스템명</th>
+                            <td rowspan="9">${eaiInterface.res_resource_name}</td>
+                            <th rowspan="3">WEB/WAS</th>
+                            <th>종류</th>
+                            <td>${eaiInterface.res_resource_was_kind}</td>
+                        </tr>
+                        <tr>
+                            <th>개발</th>
+                            <td>${eaiInterface.req_resource_was_dev}</td>
+                            <th>개발</th>
+                            <td>${eaiInterface.res_resource_was_dev}</td>
+                        </tr>
+                        <tr>
+                            <th>운영</th>
+                            <td>${eaiInterface.req_resource_was_prd}</td>
+                            <th>운영</th>
+                            <td>${eaiInterface.res_resource_was_prd}</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="3">DB</th>
+                            <th>종류</th>
+                            <td>${eaiInterface.req_resource_db_kind}</td>
+                            <th rowspan="3">DB</th>
+                            <th>종류</th>
+                            <td>${eaiInterface.res_resource_db_kind}</td>
+                        </tr>
+                        <tr>
+                            <th>개발</th>
+                            <td>${eaiInterface.req_resource_db_dev}</td>
+                            <th>개발</th>
+                            <td>${eaiInterface.res_resource_db_dev}</td>
+                        </tr>
+                        <tr>
+                            <th>운영</th>
+                            <td>${eaiInterface.req_resource_db_prd}</td>
+                            <th>운영</th>
+                            <td>${eaiInterface.res_resource_db_prd}</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="3">기타</th>
+                            <th>종류</th>
+                            <td>${eaiInterface.req_resource_etc_kind}</td>
+                            <th rowspan="3">기타</th>
+                            <th>종류</th>
+                            <td>${eaiInterface.res_resource_etc_kind}</td>
+                        </tr>
+                        <tr>
+                            <th>개발</th>
+                            <td>${eaiInterface.req_resource_etc_dev}</td>
+                            <th>개발</th>
+                            <td>${eaiInterface.res_resource_etc_dev}</td>
+                        </tr>
+                        <tr>
+                            <th>운영</th>
+                            <td>${eaiInterface.req_resource_etc_prd}</td>
+                            <th>운영</th>
+                            <td>${eaiInterface.res_resource_etc_prd}</td>
+                        </tr>
+                        <tr>
+                            <th>시스템 설명</th>
+                            <td colspan="4">${eaiInterface.req_resource_detail}</td>
+                            <th>시스템 설명</th>
+                            <td colspan="4">${eaiInterface.res_resource_detail}</td>
+                        </tr>
+                         <!-- 1031 -->
                     </table>
                 </div>
                 <div class="page__data-form">

@@ -39,7 +39,9 @@
 			procedure_call_yn=#{procedure_call_yn}, 
 			use_yn=#{use_yn}, 
 			updr_id=#{updr_id}, 
-			upd_dtm=now()
+			upd_dtm=now(),
+			req_resources_seq=#{req_resources_seq},
+			res_resources_seq=#{res_resources_seq}
 			WHERE eai_seq = #{eai_seq}
 	</update>
 

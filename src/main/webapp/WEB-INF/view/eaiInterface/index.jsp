@@ -12,7 +12,8 @@
 
     // 각 행 클릭 시 링크로 이동
     function goToDetailPage(eaiSeq) {
-        window.location.href = "/eaiInterface_/modify?eai_seq=" + eaiSeq;
+        //window.location.href = "/eaiInterface_/modify?eai_seq=" + eaiSeq;
+        window.location.href = "/eaiInterface/modifyView?eai_seq=" + eaiSeq;
         //eaiInterface_/modify?eai_seq=8
     }
 

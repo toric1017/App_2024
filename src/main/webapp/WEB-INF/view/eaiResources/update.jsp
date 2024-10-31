@@ -89,8 +89,8 @@
             </div>
             <div class="page__data-wrap">
                 <div class="page__detail-util--box">
-                    <a href="#" class="btn__white" id="resourceUpdate">Save</a>
                     <a href="#" class="btn__black" onclick="history.back()">Cancel</a>
+                    <a href="#" class="btn__white" id="resourceUpdate">Save</a>
                 </div>
                 <div class="page__data-form">
                     <h3>1. EAI 대상 시스템 정보 - 요청자 입력사항</h3>

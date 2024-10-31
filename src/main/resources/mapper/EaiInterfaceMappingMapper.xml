@@ -104,58 +104,78 @@
 			  ,A.target_mapping_data
 			  ,A.target_procedure_data
 			  ,A.target_output_data
+			  ,A.eai_seq
 		  FROM tb_interface_mapping_detail A
-		 WHERE A.seq = #{seq}
+		 WHERE A.eai_seq = #{eai_seq}
+		   and A.use_yn = 'Y'
+		   and A.del_yn = 'N'
 	</select>
 	
 	<insert id="insertMappingDetail" parameterType="com.eai_work.eaiInterface.vo.MappingVO">
-		INSERT INTO tb_interface_mapping_detail
-		(
-			 seq
-			,use_yn
-			,del_yn
-			,reg_id
-			,reg_dtm
-			,upd_id
-			,upd_dtm
-			,if_id
-			,source_input_data
-			,source_mapping_data
-			,source_procedure_data
-			,source_output_data
-			,target_input_data
-			,target_mapping_data
-			,target_procedure_data
-			,target_output_data
+		WITH UPSERT AS(
+		    UPDATE tb_interface_mapping_detail SET
+		        upd_id                = #{upd_id}
+			   ,upd_dtm               = now()
+			   ,use_yn                = 'Y'
+			   ,del_yn                = 'N'
+			   ,source_input_data     = #{source_input_data}
+			   ,source_mapping_data   = #{source_mapping_data}
+			   ,source_procedure_data = #{source_procedure_data}
+			   ,source_output_data    = #{source_output_data}
+			   ,target_input_data     = #{target_input_data}
+			   ,target_mapping_data   = #{target_mapping_data}
+			   ,target_procedure_data = #{target_procedure_data}
+			   ,target_output_data    = #{target_output_data}
+		    WHERE eai_seq = #{eai_seq}
+		      and if_id   = #{if_id} 
+		    RETURNING *
 		)
-		VALUES
-		(
-			 nextval('tb_interface_mapping_detail_seq')
-			,#{use_yn}
-			,#{del_yn}
-			,#{reg_id}
-			,#{reg_dtm}
-			,#{upd_id}
-			,#{upd_dtm}
-			,#{if_id}
-			,#{source_input_data}
-			,#{source_mapping_data}
-			,#{source_procedure_data}
-			,#{source_output_data}
-			,#{target_input_data}
-			,#{target_mapping_data}
-			,#{target_procedure_data}
-			,#{target_output_data}
-		)
+		INSERT INTO 
+			tb_interface_mapping_detail (
+				 seq
+				,use_yn
+				,del_yn
+				,reg_id
+				,reg_dtm
+				,upd_id
+				,upd_dtm
+				,if_id
+				,source_input_data
+				,source_mapping_data
+				,source_procedure_data
+				,source_output_data
+				,target_input_data
+				,target_mapping_data
+				,target_procedure_data
+				,target_output_data
+				,eai_seq
+			)
+		SELECT nextval('tb_interface_mapping_detail_seq')
+		      ,'Y'
+		      ,'N'
+		      ,#{reg_id}
+		      ,now()
+		      ,#{upd_id}
+		      ,now()
+		      ,#{if_id}
+		      ,#{source_input_data}
+		      ,#{source_mapping_data}
+		      ,#{source_procedure_data}
+		      ,#{source_output_data}
+		      ,#{target_input_data}
+		      ,#{target_mapping_data}
+		      ,#{target_procedure_data}
+		      ,#{target_output_data}
+		      ,#{eai_seq}
+		WHERE NOT EXISTS(SELECT  * FROM UPSERT)
 	</insert>
 	
 	<update id="updateMappingDetail" parameterType="com.eai_work.eaiInterface.vo.MappingVO">
 		UPDATE tb_interface_mapping_detail
-		   SET use_yn                = #{use_yn}
-		      ,del_yn                = #{del_yn}
-		      ,upd_id                = #{upd_id}
-		      ,upd_dtm               = #{upd_dtm}
-		      ,if_id                 = #{if_id}
+		   SET upd_id                = #{upd_id}
+		      ,upd_dtm               = now()
+		      ,use_yn                = 'Y'
+			  ,del_yn                = 'N'
 		      ,source_input_data     = #{source_input_data}
 		      ,source_mapping_data   = #{source_mapping_data}
 		      ,source_procedure_data = #{source_procedure_data}
@@ -164,6 +184,14 @@
 		      ,target_mapping_data   = #{target_mapping_data}
 		      ,target_procedure_data = #{target_procedure_data}
 		      ,target_output_data    = #{target_output_data}
+		 WHERE eai_seq = #{eai_seq}
+		   and if_id   = #{if_id}
+	</update>
+	
+	<update id="deleteMappingDetail" parameterType="com.eai_work.eaiInterface.vo.MappingVO">
+		UPDATE tb_interface_mapping_detail
+		   SET use_yn                = 'N'
+		      ,del_yn                = 'Y'
 		 WHERE seq = #{seq}
 	</update>
 	

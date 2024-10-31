@@ -14,15 +14,15 @@ public class MappingEV {
 	private String req_rfc_id;
 	private String req_rfc_type_cd;
 	private String req_dev_db_user_id;
-	private String req_dev_db_pass;
+	private String req_dev_db_user_pass;
 	private String req_real_db_user_id;
-	private String req_real_db_pass;
+	private String req_real_db_user_pass;
 	private String req_api_chl_nm;
 	private String res_rfc_type_cd;
 	private String res_dev_db_user_id;
-	private String res_dev_db_pass;
+	private String res_dev_db_user_pass;
 	private String res_real_db_user_id;
-	private String res_real_db_pass;
+	private String res_real_db_user_pass;
 	private String res_api_chl_nm;
 	private String res_api_add;
 	private String res_operation;
@@ -46,12 +46,12 @@ public class MappingEV {
 	private String req_res_div_cd;
 	private String db_way_div_cd;
 	private String rfc_db_user_id;
-	private String rfc_db_user_pass;
+	private String rfc_db_user_user_pass;
 	private String api_chl_nm;
 	private String req_api_add;
     private String req_operation;
 
-
+    private String rfc_db_user_pass;
 
 
 	
@@ -327,12 +327,12 @@ public class MappingEV {
         this.req_dev_db_user_id = req_dev_db_user_id;
     }
 
-    public String getReq_dev_db_pass() {
-        return req_dev_db_pass;
+    public String getReq_dev_db_user_pass() {
+        return req_dev_db_user_pass;
     }
 
-    public void setReq_dev_db_pass(String req_dev_db_pass) {
-        this.req_dev_db_pass = req_dev_db_pass;
+    public void setReq_dev_db_user_pass(String req_dev_db_user_pass) {
+        this.req_dev_db_user_pass = req_dev_db_user_pass;
     }
 
     public String getReq_real_db_user_id() {
@@ -351,12 +351,12 @@ public class MappingEV {
         this.req_rfc_id = req_rfc_id;
     }
 
-    public String getReq_real_db_pass() {
-        return req_real_db_pass;
+    public String getReq_real_db_user_pass() {
+        return req_real_db_user_pass;
     }
 
-    public void setReq_real_db_pass(String req_real_db_pass) {
-        this.req_real_db_pass = req_real_db_pass;
+    public void setReq_real_db_user_pass(String req_real_db_user_pass) {
+        this.req_real_db_user_pass = req_real_db_user_pass;
     }
 
     public String getReq_api_chl_nm() {
@@ -383,12 +383,12 @@ public class MappingEV {
         this.res_dev_db_user_id = res_dev_db_user_id;
     }
 
-    public String getRes_dev_db_pass() {
-        return res_dev_db_pass;
+    public String getRes_dev_db_user_pass() {
+        return res_dev_db_user_pass;
     }
 
-    public void setRes_dev_db_pass(String res_dev_db_pass) {
-        this.res_dev_db_pass = res_dev_db_pass;
+    public void setRes_dev_db_user_pass(String res_dev_db_user_pass) {
+        this.res_dev_db_user_pass = res_dev_db_user_pass;
     }
 
     public String getRes_real_db_user_id() {
@@ -399,12 +399,12 @@ public class MappingEV {
         this.res_real_db_user_id = res_real_db_user_id;
     }
 
-    public String getRes_real_db_pass() {
-        return res_real_db_pass;
+    public String getRes_real_db_user_pass() {
+        return res_real_db_user_pass;
     }
 
-    public void setRes_real_db_pass(String res_real_db_pass) {
-        this.res_real_db_pass = res_real_db_pass;
+    public void setRes_real_db_user_pass(String res_real_db_user_pass) {
+        this.res_real_db_user_pass = res_real_db_user_pass;
     }
 
     public String getRes_api_chl_nm() {

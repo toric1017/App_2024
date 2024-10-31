@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,8 @@ import com.eai_work.common.util.ResponseUtil;
 import com.eai_work.common.vo.ResponseVO;
 import com.eai_work.eaiInterface.service.EaiInterfaceService;
 import com.eai_work.eaiInterface.vo.MappingEV;
+import com.eai_work.eaiResources.entity.EaiResources;
+import com.eai_work.eaiResources.service.eaiResourcesService;
 
 @RequestMapping(value= {"/eaiInterface_"})
 @Controller
@@ -28,6 +32,9 @@ public class eaiInterfaceController {
 
 	@Autowired
 	private EaiInterfaceService eaiInterfaceService;
+
+	@Autowired
+	private eaiResourcesService eaiResourcesService;
 
 	@SuppressWarnings("unused")
 	private final static Logger log = LoggerFactory.getLogger(eaiInterfaceController.class);
@@ -96,9 +103,28 @@ public class eaiInterfaceController {
 	}
 
 	// 상세
-	@GetMapping("/modify")
-	public String findByid(@RequestParam int eai_seq, Model model) {
+	// 상세
+	@GetMapping("/modifyView")
+	public String modifyView(@RequestParam int eai_seq, Model model) {
 		try {
+
+			model.addAttribute("eaiInterface", eaiInterfaceService.selectMaster(eai_seq));
+			System.out.println("view eai_seq: " + eai_seq);
+			System.out.println("view eaiInterface: " + eaiInterfaceService.selectMaster(eai_seq));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/eaiInterface/modifyView";
+	}
+
+	@GetMapping("/modify")
+	public String modify(@RequestParam int eai_seq, Model model, Pageable pageable) {
+		try {
+
+			Page<EaiResources> eaiDivCds = eaiResourcesService.eaiResourcesList(null,pageable);
+			model.addAttribute("eaiResources", eaiDivCds);
+
+			System.out.println("modify interface : " + eaiDivCds);
 
 			model.addAttribute("eaiInterface", eaiInterfaceService.selectMaster(eai_seq));
 			System.out.println("eai_seq: " + eai_seq);

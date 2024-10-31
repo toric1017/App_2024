@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <script type="text/javascript">
 
+	var eaiSeq = ${eai_seq};
+	
 	$(document).ready(function(){
 		fn_init();
 	})
@@ -13,7 +15,7 @@
 
 	var mappingDataSet = function() {
 		var data ={
-			"seq" : 3		           
+			"eai_seq" : eaiSeq
 		};
 		
 		// Ajax 호출
@@ -48,87 +50,84 @@
 
 	//Mapping 데이터 Setting
 	var fn_mappingDataSet = function(data) {
-		// Mappig 마스터 데이터
-		/*
-		var mappingMaster         = data.mappingMaster;
-		var seq                   = mappingMaster.seq;
-		var use_yn                = mappingMaster.use_yn;
-		var del_yn                = mappingMaster.del_yn;
-		var reg_id                = mappingMaster.reg_id;
-		var reg_dtm               = mappingMaster.reg_dtm;
-		var upd_id                = mappingMaster.upd_id;
-		var upd_dtm               = mappingMaster.upd_dtm;
-		var if_id                 = mappingMaster.if_id;
-		var if_mapping_detail_seq = mappingMaster.if_mapping_detail_seq;
-		var source_system_name    = mappingMaster.source_system_name;
-		var source_object_name    = mappingMaster.source_object_name;
-		var source_adaptor        = mappingMaster.source_adaptor;
-		var source_method         = mappingMaster.source_method;
-		var target_system_name    = mappingMaster.target_system_name;
-		var target_object_name    = mappingMaster.target_object_name;
-		var target_adaptor        = mappingMaster.target_adaptor;
-		var target_method         = mappingMaster.target_method;
-		*/
-		/*
-		var source_procedure_data = mappingDetail.source_procedure_data;
-		var source_output_data    = mappingDetail.source_output_data;
-		var target_procedure_data = mappingDetail.target_procedure_data;
-		var target_output_data    = mappingDetail.target_output_data;
-		*/
+		// interface 데이터
+		var interfaceInfo = data.interfaceMaster;
 		
+		$("#eai_desc").text(interfaceInfo.eai_desc);
+		$("#req_resource_name").text(interfaceInfo.req_resource_name);
+		$("#req_adaptor").text(interfaceInfo.req_adaptor);
+		$("#req_if_way_cd").text(interfaceInfo.req_if_way_cd);
+		if(interfaceInfo.req_rfc_type_cd != ""){
+			$("#req_object_name").text(interfaceInfo.req_rfc_type_cd);	
+		} else {
+			$("#req_object_name").text(interfaceInfo.req_rfc_id);	
+		}
+		
+		$("#if_id").text(interfaceInfo.eai_id);
+		$("#res_resource_name").text(interfaceInfo.res_resource_name);
+		$("#res_adaptor").text(interfaceInfo.res_adaptor);
+		$("#res_if_way_cd").text(interfaceInfo.res_if_way_cd);
+		if(interfaceInfo.res_rfc_type_cd != ""){
+			$("#res_object_name").text(interfaceInfo.res_rfc_type_cd);	
+		} else {
+			$("#req_object_name").text(interfaceInfo.res_rfc_id);	
+		}
 		
 		// Mapping 상세 데이터
 		var mappingDetail         = data.mappingDetail;
-		var seq                   = mappingDetail.seq;
-		var use_yn                = mappingDetail.use_yn;
-		var del_yn                = mappingDetail.del_yn;
-		var reg_id                = mappingDetail.reg_id;
-		var reg_dtm               = mappingDetail.reg_dtm;
-		var upd_id                = mappingDetail.upd_id;
-		var upd_dtm               = mappingDetail.upd_dtm;
-		var if_id                 = mappingDetail.if_id;
-		var source_input_data     = mappingDetail.source_input_data;
-		var source_mapping_data   = mappingDetail.source_mapping_data;
-		var target_input_data     = mappingDetail.target_input_data;
-		var target_mapping_data   = mappingDetail.target_mapping_data;
-		
-		//source_input_data
-		if(source_input_data.length > 0) {
-			for(var i=0; i<source_input_data.length; i++) {
-				if(i > 1) {
-					addInputData('input');	
-				}
-				
-				var dataMap = source_input_data[i];
-				fn_inputDataSet(i, "s", "input", dataMap);
-			}	
-		}
-		//source_mapping_data
-		if(source_mapping_data.length > 0) {
+		if(mappingDetail != null){
+			var seq                   = mappingDetail.seq;
+			var use_yn                = mappingDetail.use_yn;
+			var del_yn                = mappingDetail.del_yn;
+			var reg_id                = mappingDetail.reg_id;
+			var reg_dtm               = mappingDetail.reg_dtm;
+			var upd_id                = mappingDetail.upd_id;
+			var upd_dtm               = mappingDetail.upd_dtm;
+			var if_id                 = mappingDetail.if_id;
+			var source_input_data     = mappingDetail.source_input_data;
+			var source_mapping_data   = mappingDetail.source_mapping_data;
+			var target_input_data     = mappingDetail.target_input_data;
+			var target_mapping_data   = mappingDetail.target_mapping_data;
 			
-			for(var i=0; i<source_mapping_data.length; i++) {
-				if(i > 1) {
-					addInputData('req');	
-				}
-				var dataMap = source_mapping_data[i];
-				fn_inputDataSet(i, "s", "req", dataMap);
-			}	
-		}
-		
-		//target_input_data
-		if(target_input_data.length > 0) {
-			for(var i=0; i<target_input_data.length; i++) {
-				var dataMap = target_input_data[i];
-				fn_inputDataSet(i, "t", "input", dataMap);
-			}	
-		}
+			$("#mapping_seq").val(seq);		
+			
+			//source_input_data
+			if(source_input_data.length > 0) {
+				for(var i=0; i<source_input_data.length; i++) {
+					if(i > 1) {
+						addInputData('input');	
+					}
+					var dataMap = source_input_data[i];
+					fn_inputDataSet(i, "s", "input", dataMap);
+				}	
+			}
+			//source_mapping_data
+			if(source_mapping_data.length > 0) {
+				
+				for(var i=0; i<source_mapping_data.length; i++) {
+					if(i > 1) {
+						addInputData('req');	
+					}
+					var dataMap = source_mapping_data[i];
+					fn_inputDataSet(i, "s", "req", dataMap);
+				}	
+			}
+			
+			//target_input_data
+			if(target_input_data.length > 0) {
+				for(var i=0; i<target_input_data.length; i++) {
+					var dataMap = target_input_data[i];
+					fn_inputDataSet(i, "t", "input", dataMap);
+				}	
+			}
 
-		//target_mapping_data
-		if(target_mapping_data.length > 0) {
-			for(var i=0; i<target_mapping_data.length; i++) {
-				var dataMap = target_mapping_data[i];
-				fn_inputDataSet(i, "t", "req", dataMap);
-			}	
+			//target_mapping_data
+			if(target_mapping_data.length > 0) {
+				for(var i=0; i<target_mapping_data.length; i++) {
+					var dataMap = target_mapping_data[i];
+					fn_inputDataSet(i, "t", "req", dataMap);
+				}	
+			}
 		}
 	}
 
@@ -186,7 +185,6 @@
 		
 		$("#t_"+btn+"_tr_"+rowSpan).after(t_row);
 		$("#t_"+btn+"_td").attr("rowspan", idx);
-		
     }
     
     
@@ -208,35 +206,73 @@
     }
     
     var saveMapping = function() {
-    	
+		
+		var mappingSeq = $("#mapping_seq").val();
+		
     	var data = {    		
     		"if_id" : $("#if_id").text()
     		,"source_input_data" : getJSONData('s_input')
     		,"source_mapping_data" : getJSONData('s_req')
     		,"target_input_data" : getJSONData('t_input')
     		,"target_mapping_data" : getJSONData('t_req')
+			,"eai_seq" : eaiSeq
+			,"seq" : mappingSeq
     	}
+		
+		var url = "/eaiInterface/mapping/insertMapping";
     	
-    	$.ajax({
-            url: "/eaiInterface/mapping/insertMapping",
-            type: "POST",
-            data: JSON.stringify(data),
-            headers : {
-						"Content-Type" : "application/json; charset=utf-8",
-						"Authorization" : CommonUtil.session.apiKey
-						},
-            dataType: "json",
-            success: function(response) {
-                console.log("Insert Success!");
-             },
-             error: function(xhr, status, error) {
-             	console.error("Ajax 오류: ", xhr.responseText);
-             	alert("등록 중 오류가 발생했습니다.");
-             }
-          });
-                 
+		if(confirm("저장하시겠습니까?")) {
+	    	$.ajax({
+	            url: url,
+	            type: "POST",
+	            data: JSON.stringify(data),
+	            headers : {
+							"Content-Type" : "application/json; charset=utf-8",
+							"Authorization" : CommonUtil.session.apiKey
+							},
+	            dataType: "json",
+	            success: function(response) {
+	                location.reload();
+	             },
+	             error: function(xhr, status, error) {
+	             	console.error("Ajax 오류: ", xhr.responseText);
+	             	alert("등록 중 오류가 발생했습니다.");
+	             }
+	        });
+        }
     }
-    
+	
+	var deleteMapping = function(){
+		var mappingSeq = $("#mapping_seq").val();
+		if(mappingSeq == null || mappingSeq == ""){
+			alert("삭제할 Mapping 데이터가 없습니다.");
+			return false;
+		}
+		
+		if(confirm("삭제하시겠습니까?")) {
+			var data = {
+				"seq" : mappingSeq
+			}
+			
+			$.ajax({
+			    url: "/eaiInterface/mapping/deleteMapping",
+			    type: "POST",
+			    data: JSON.stringify(data),
+			    headers : {
+							"Content-Type" : "application/json; charset=utf-8",
+							"Authorization" : CommonUtil.session.apiKey
+							},
+			    dataType: "json",
+			    success: function(response) {
+					location.reload();
+			    },
+				error: function(xhr, status, error) {
+					console.error("Ajax 오류: ", xhr.responseText);
+			     	alert("삭제 중 오류가 발생했습니다.");
+			    }
+			});
+		}
+	}
     
     var getJSONData = function(gbn) {
     	var rowSpan = Number($("#"+gbn+"_td").attr("rowspan"));
@@ -257,13 +293,10 @@
     		
     		inputDataArray.push(inputData);
     	}    	
-    	
     	return JSON.stringify(inputDataArray);
-    
     }
-    
-    
-</script>     
+</script>
+	<div class="card">
         <div class="container">
             <div class="page__util-box">
                 <!-- 페이지 타이틀 -->
@@ -271,9 +304,9 @@
             </div>
             <div class="page__data-wrap">
                 <div class="page__detail-util--box">
-                    <a href="#" class="btn__black">Cancel</a>
+                    <a href="/eaiInterface/modifyView?eai_seq=${eai_seq}" class="btn__black">Cancel</a>
                     <a href="#" class="btn__white" onclick="saveMapping()">Save</a>
-                    <a href="#" class="btn__white">Del</a>
+                    <a href="#" class="btn__white" onclick="deleteMapping()">Del</a>
                 </div>
                 
                 <div class="half-area">
@@ -288,27 +321,28 @@
                             </colgroup>
                             <tr>
                                 <th class="th__title">인터페이스명</th>
-                                <td colspan="3">통합의뢰 상태 변경 이력 인터페이스 (PLM -> QMS)</td>
+                                <td colspan="3" id="eai_desc"></td>
                             </tr>
                             <tr>
                                 <th colspan="4">요청시스템</th>
                             </tr>
                             <tr>
                                 <th>시스템명</th>
-                                <td colspan="3">CJ_QMS</td>
+                                <td colspan="3" id="req_resource_name"></td>
                             </tr>                      
                             <tr>
                                 <th>관련 Object 명</th>
-                                <td colspan="3"></td>
+                                <td colspan="3" id="req_object_name"></td>
                             </tr>
                             <tr>
                                 <th>Adaptor</th>
-                                <td>API(MOM/DB)</td>
+                                <td id="req_adaptor"></td>
                                 <th>인터페이스 방식</th>
-                                <td>요청/데이터 수신</td>
+                                <td id="req_if_way_cd"></td>
                             </tr>
                         </table>
                         <div class="scroll-area">
+							<input type="hidden" name="mapping_seq" id="mapping_seq" value="" />
                             <div class="page__data-list">
                                 <table id="source_table_data">                        
                                     <colgroup>
@@ -504,24 +538,24 @@
                             </colgroup>
                             <tr>
                                 <th class="th__title">인터페이스ID</th>
-                                <td id="if_id" colspan="3"></td>
+                                <td colspan="3" id="if_id"></td>
                             </tr>
                             <tr>
                                 <th colspan="4">응답시스템</th>
                             </tr>
                             <tr>
                                 <th>시스템명</th>
-                                <td colspan="3">CJ_QMS</td>
+                                <td colspan="3" id="res_resource_name"></td>
                             </tr>                      
                             <tr>
                                 <th>관련 Object 명</th>
-                                <td colspan="3"></td>
+                                <td colspan="3" id="res_object_name"></td>
                             </tr>
                             <tr>
                                 <th>Adaptor</th>
-                                <td>API(MOM/DB)</td>
+                                <td id="res_adaptor"></td>
                                 <th>인터페이스 방식</th>
-                                <td>요청/데이터 수신</td>
+                                <td id="res_if_way_cd"></td>
                             </tr>
                         </table>
                         <div class="scroll-area">
@@ -712,3 +746,4 @@
                 </div>
             </div>
         </div>
+	</div>

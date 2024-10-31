@@ -179,7 +179,8 @@ header .header_inner-wrap .gnb__menu-wrap ul a.active{color:#426b1f;font-weight:
 .btn__white:hover{background-color:#ddd;}
 .btn__black{display:inline-block;padding:8px 16px;font-size:14px;color:#fff;font-weight:700;border:1px solid #111;background:#111;border-radius:4px;transition:all .4s;}
 .btn__black:hover{background-color:#666;}
-
+.btn__green{display:inline-block;padding:8px 16px;font-size:14px;color:#fff;font-weight:700;border:1px solid #111;background:#008000;border-radius:4px;transition:all .4s;}
+.btn__green:hover{background-color:#808000;}
 
 /* 검색창 컨테이너 */
 .search-container {

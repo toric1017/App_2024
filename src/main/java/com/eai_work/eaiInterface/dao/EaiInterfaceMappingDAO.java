@@ -18,4 +18,6 @@ public interface EaiInterfaceMappingDAO {
 	
 	MappingVO updateMappingDetail(MappingVO vo);
 	
+	MappingVO deleteMappingDetail(MappingVO vo);
+	
 }

@@ -37,4 +37,9 @@ public class EaiInterfaceMappingDAOImpl extends CommonDAO implements EaiInterfac
 		sqlSession.insert("EaiInterfaceMappingMapper.updateMappingDetail", vo);
 		return null;
 	}
+	
+	public MappingVO deleteMappingDetail(MappingVO vo) {
+		sqlSession.insert("EaiInterfaceMappingMapper.deleteMappingDetail", vo);
+		return null;
+	}
 }

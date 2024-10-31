@@ -56,4 +56,12 @@ public interface EaiInterfaceMappingService {
 	 */
 	public String updateMappingDetail(HttpServletRequest request, MappingVO vo) throws Exception;
 	
+	/**
+	 * Mapping Detail 삭제
+	 * @Method : EaiInterfaceMappingService.deleteMappingDetail
+	 * @Return : String
+	 * @Description : 인터페이스 Mapping Detail 수정
+	 */
+	public String deleteMappingDetail(HttpServletRequest request, MappingVO vo) throws Exception;
+	
 }

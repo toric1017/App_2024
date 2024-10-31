@@ -1,6 +1,5 @@
 package com.eai_work.eaiInterface.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,19 +44,30 @@ public class EaiInterfaceMappingServiceImpl implements EaiInterfaceMappingServic
 		return null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public HashMap<String, Object> selectMappingDetail(HttpServletRequest request, MappingVO vo) throws Exception {
 		
 		HashMap<String, Object> mappingDetail = eaiInterfaceMappingDAO.selectMappingDetail(vo);
 		
-		ArrayList<HashMap<String, Object>> source_input_data   = JsonUtil.jsonArrayToList(StringUtil.stringNvl(mappingDetail.get("source_input_data"),""));
-		ArrayList<HashMap<String, Object>> source_mapping_data = JsonUtil.jsonArrayToList(StringUtil.stringNvl(mappingDetail.get("source_mapping_data"),""));
-		ArrayList<HashMap<String, Object>> target_input_data   = JsonUtil.jsonArrayToList(StringUtil.stringNvl(mappingDetail.get("target_input_data"),""));
-		ArrayList<HashMap<String, Object>> target_mapping_data = JsonUtil.jsonArrayToList(StringUtil.stringNvl(mappingDetail.get("target_mapping_data"),""));
-		
-		mappingDetail.put("source_input_data"     , source_input_data);
-		mappingDetail.put("source_mapping_data"   , source_mapping_data);
-		mappingDetail.put("target_input_data"     , target_input_data);
-		mappingDetail.put("target_mapping_data"   , target_mapping_data);
+		if(mappingDetail != null) {
+			String source_input_data   = StringUtil.stringNvl(mappingDetail.get("source_input_data"),"");
+			String source_mapping_data = StringUtil.stringNvl(mappingDetail.get("source_mapping_data"),"");
+			String target_input_data   = StringUtil.stringNvl(mappingDetail.get("target_input_data"),"");
+			String target_mapping_data = StringUtil.stringNvl(mappingDetail.get("target_mapping_data"),"");
+			
+			if(StringUtil.hasText(source_input_data)) {
+				mappingDetail.put("source_input_data", JsonUtil.jsonArrayToList(source_input_data));
+			}
+			if(StringUtil.hasText(source_mapping_data)) {
+				mappingDetail.put("source_mapping_data", JsonUtil.jsonArrayToList(source_mapping_data));
+			}
+			if(StringUtil.hasText(target_input_data)) {
+				mappingDetail.put("target_input_data", JsonUtil.jsonArrayToList(target_input_data));
+			}
+			if(StringUtil.hasText(source_input_data)) {
+				mappingDetail.put("target_mapping_data", JsonUtil.jsonArrayToList(target_mapping_data));
+			}
+		}
 		
 		/*
 		HashMap<String, Object> source_procedure_data = JsonUtil.jsonToMap(StringUtil.stringNvl(mappingDetail.get("source_procedure_data"),""));
@@ -86,6 +96,13 @@ public class EaiInterfaceMappingServiceImpl implements EaiInterfaceMappingServic
 	public String updateMappingDetail(HttpServletRequest request, MappingVO vo) throws Exception {
 		
 		eaiInterfaceMappingDAO.updateMappingDetail(vo);
+		
+		return null;
+	}
+	
+	public String deleteMappingDetail(HttpServletRequest request, MappingVO vo) throws Exception {
+		
+		eaiInterfaceMappingDAO.deleteMappingDetail(vo);
 		
 		return null;
 	}

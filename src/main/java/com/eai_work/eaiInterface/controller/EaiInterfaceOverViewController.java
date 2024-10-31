@@ -130,9 +130,33 @@ public class EaiInterfaceOverViewController {
 	}
 
 	// 상세
-	@GetMapping("/modify")
-	public String findByid(@RequestParam int eai_seq, Model model) {
+	@GetMapping("/modifyView")
+	public String modifyView(@RequestParam int eai_seq, Model model, @PageableDefault(size=5, sort= "resourceSeq", direction = Sort.Direction.DESC ) Pageable pageable) {
 		try {
+			
+			Page<EaiResources> eaiDivCds = eaiResourcesService.eaiResourcesList(null,pageable);
+			model.addAttribute("eaiResources", eaiDivCds);
+
+			System.out.println("modifyView over : " + model.getAttribute("eaiResources").toString());
+
+			model.addAttribute("eaiInterface", eaiInterfaceService.selectMaster(eai_seq));
+			System.out.println("view eai_seq: " + eai_seq);
+			System.out.println("view eaiInterface: " + eaiInterfaceService.selectMaster(eai_seq));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/eaiInterface/modifyView";
+	}
+
+	//수정
+	@GetMapping("/modify")
+	public String modify(@RequestParam int eai_seq, Model model, @PageableDefault(size=5, sort= "resourceSeq", direction = Sort.Direction.DESC ) Pageable pageable) {
+		try {
+
+			Page<EaiResources> eaiDivCds = eaiResourcesService.eaiResourcesList(null,pageable);
+			model.addAttribute("eaiResources", eaiDivCds);
+
+			System.out.println("modify over : " + model.getAttribute("eaiResources").toString());
 
 			model.addAttribute("eaiInterface", eaiInterfaceService.selectMaster(eai_seq));
 			System.out.println("eai_seq: " + eai_seq);

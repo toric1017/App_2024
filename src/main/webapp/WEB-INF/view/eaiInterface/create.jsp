@@ -136,7 +136,8 @@
                 if (response.status === 200) {
                     // 등록 성공 시, 반환된 resourceSeq 값으로 상세 페이지로 리다이렉트
                     console.log("Success callback called", response);
-                    location.href = "/eaiInterface/modify?eai_seq=" + response.data;
+                    //location.href = "/eaiInterface/modify?eai_seq=" + response.data;
+                    location.href = "/eaiInterface/modifyView?eai_seq=" + response.data;
                 } else {
                     alert("등록 중 오류가 발생했습니다.1");
                 }

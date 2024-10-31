@@ -55,7 +55,7 @@
             </div>
             <div class="page__data-wrap">
                 <div class="page__detail-util--box">
-                    <a href="#" class="btn__white" onclick="resourceList()">list</a>
+                    <a href="#" class="btn__black" onclick="resourceList()">List</a>
                     <a href="/eaiResources/updateForm/${eaiResources.resourceSeq}" class="btn__white">Edit</a>
                     <a href="#" id="btn-delete" class="btn__white" onclick="resourceDel()">Del</a>
                 </div>

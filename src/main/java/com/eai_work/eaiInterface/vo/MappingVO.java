@@ -62,7 +62,16 @@ public class MappingVO {
 	private String target_procedure_data;
 	/* Target Output 데이터 */
 	private String target_output_data;
+	/* eai seq */
+	private int eai_seq;
 	
+	
+	public int getEai_seq() {
+		return eai_seq;
+	}
+	public void setEai_seq(int eai_seq) {
+		this.eai_seq = eai_seq;
+	}
 	public int getSeq() {
 		return seq;
 	}
